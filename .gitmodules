@@ -6,3 +6,6 @@
 	path = mozilla-ca
 	url = https://github.com/Chia-Network/mozilla-ca.git
         branch = main
+[submodule "coffee-blockchain-gui"]
+	path = coffee-blockchain-gui
+	url = https://github.com/Coffee-Network/coffee-blockchain-gui
