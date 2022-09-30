@@ -1,14 +1,15 @@
 name: Lint and upload source distribution
 
 on:
-  push:
-    branches:
-      - main
-    tags:
-        - '**'
-  pull_request:
-    branches:
-      - '**'
+  workflow_dispatch:
+  # push:
+  #   branches:
+  #     - main
+  #   tags:
+  #       - '**'
+  # pull_request:
+  #   branches:
+  #     - '**'
 
 jobs:
   upload_source_dist:

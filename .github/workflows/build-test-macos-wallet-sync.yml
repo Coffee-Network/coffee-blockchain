@@ -4,14 +4,15 @@
 name: MacOS wallet-sync Tests
 
 on:
-  push:
-    branches:
-      - main
-    tags:
-        - '**'
-  pull_request:
-    branches:
-      - '**'
+  workflow_dispatch:
+  # push:
+  #   branches:
+  #     - main
+  #   tags:
+  #       - '**'
+  # pull_request:
+  #   branches:
+  #     - '**'
 
 jobs:
   build:

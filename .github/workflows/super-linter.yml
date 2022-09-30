@@ -16,12 +16,13 @@ name: GithHub Super Linter
 # Start the job on all push #
 #############################
 on:
-  push:
-    branches-ignore:
-      - 'main'
-  pull_request:
-    branches-ignore:
-      - ''
+  workflow_dispatch:
+  # push:
+  #   branches-ignore:
+  #     - 'main'
+  # pull_request:
+  #   branches-ignore:
+  #     - ''
 
 ###############
 # Set the Job #
