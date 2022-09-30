@@ -5,7 +5,7 @@ if [[ x$1 == x ]]; then
 	return
 fi
 
-cd chia-blockchain-gui
+cd coffee-blockchain-gui
 # echo "Installing npm and electron packagers ========================================================================"
 #npm config set production true
 #npm config set registry https://registry.npm.taobao.org

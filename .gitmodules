@@ -1,5 +1,5 @@
-[submodule "chia-blockchain-gui"]
-	path = chia-blockchain-gui
+[submodule "coffee-blockchain-gui"]
+	path = coffee-blockchain-gui
 	url = https://github.com/silicoin-network/silicoin-blockchain-gui.git
 	branch = main
 [submodule "mozilla-ca"]

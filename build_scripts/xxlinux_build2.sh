@@ -15,7 +15,7 @@ fi
 #sudo apt install npm
 #sudo apt install jq
 
-cd chia-blockchain-gui
+cd coffee-blockchain-gui
 # echo "Installing npm and electron packagers ========================================"
 #npm config set production true
 #npm config set registry https://registry.npm.taobao.org

@@ -5,7 +5,7 @@ if [[ x$1 == x ]]; then
 	return
 fi
 
-cd chia-blockchain-gui
+cd coffee-blockchain-gui
 # echo "Installing npm and electron packagers ========================================================================"
 # npm install electron-installer-dmg -g
 # npm install electron-packager -g

@@ -152,7 +152,7 @@ jobs:
       run: |
         . ./activate
         ldd --version
-        cd ./chia-blockchain-gui
+        cd ./coffee-blockchain-gui
         git status
         cd ../build_scripts
         sh build_linux_deb.sh amd64

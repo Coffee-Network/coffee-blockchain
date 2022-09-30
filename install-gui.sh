@@ -14,7 +14,7 @@ if [ "$(id -u)" = 0 ]; then
 	exit 1
 fi
 
-# Allows overriding the branch or commit to build in chia-blockchain-gui
+# Allows overriding the branch or commit to build in coffee-blockchain-gui
 SUBMODULE_BRANCH=$1
 
 UBUNTU=false
@@ -90,7 +90,7 @@ if [ ! "$CI" ]; then
 	echo "Running git submodule update."
 	echo ""
 	git submodule update
-	cd chia-blockchain-gui
+	cd coffee-blockchain-gui
 
 	if [ "$SUBMODULE_BRANCH" ];
 	then
@@ -113,4 +113,4 @@ fi
 echo ""
 echo "Silicoin blockchain install-gui.sh completed."
 echo ""
-echo "Type 'cd chia-blockchain-gui' and then 'npm run electron &' to start the GUI."
+echo "Type 'cd coffee-blockchain-gui' and then 'npm run electron &' to start the GUI."

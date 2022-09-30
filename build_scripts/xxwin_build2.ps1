@@ -3,7 +3,7 @@ param (
 )
 $env:CHIA_INSTALLER_VERSION = $version
 
-Set-Location -Path ".\chia-blockchain-gui" -PassThru
+Set-Location -Path ".\coffee-blockchain-gui" -PassThru
 
 Write-Output "   ---"
 Write-Output "Prepare Electron packager"

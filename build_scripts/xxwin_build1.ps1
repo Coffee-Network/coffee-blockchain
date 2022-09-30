@@ -6,7 +6,7 @@ Write-Output "   ---"
 Write-Output "clean source"
 Write-Output "   ---"
 git clean -fdx
-Set-Location -Path ".\chia-blockchain-gui" -PassThru
+Set-Location -Path ".\coffee-blockchain-gui" -PassThru
 git clean -fdx
 Set-Location -Path "../" -PassThru
 
@@ -71,9 +71,9 @@ $SPEC_FILE = (python -c 'import chia; print(chia.PYINSTALLER_SPEC_PATH)') -join 
 pyinstaller --log-level INFO $SPEC_FILE
 
 Write-Output "   ---"
-Write-Output "Copy silicoin executables to chia-blockchain-gui\"
+Write-Output "Copy silicoin executables to coffee-blockchain-gui\"
 Write-Output "   ---"
-Copy-Item "dist\daemon" -Destination "..\chia-blockchain-gui\" -Recurse
+Copy-Item "dist\daemon" -Destination "..\coffee-blockchain-gui\" -Recurse
 
 cd ../
 deactivate

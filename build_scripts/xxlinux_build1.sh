@@ -8,7 +8,7 @@ echo "clean source ========================="
 # git clean -fdx
 rm -rf ./build_scripts/build
 rm -rf ./build_scripts/dist
-cd chia-blockchain-gui
+cd coffee-blockchain-gui
 git clean -fdx
 cd ../
 
@@ -43,7 +43,7 @@ deactivate
 
 echo "cp daemon ========================="
 #daemon
-#cp -r dist/daemon ../chia-blockchain-gui
+#cp -r dist/daemon ../coffee-blockchain-gui
 rm -rf ../../sit-linux
 cp -r dist/daemon ../../sit-linux
 cd ../

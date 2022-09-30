@@ -94,7 +94,7 @@ jobs:
         run: |
           export PATH=$(brew --prefix node@14)/bin:$PATH
           . ./activate
-          cd ./chia-blockchain-gui
+          cd ./coffee-blockchain-gui
           arch -arm64 git status
           cd ../build_scripts
           arch -arm64 sh build_macos_m1.sh
