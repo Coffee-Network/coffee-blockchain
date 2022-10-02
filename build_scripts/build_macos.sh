@@ -57,7 +57,7 @@ cp package.json package.json.orig
 jq --arg VER "$CHIA_INSTALLER_VERSION" '.version=$VER' package.json > temp.json && mv temp.json package.json
 
 electron-packager . $APP_NAME --asar.unpack="**/daemon/**" --platform=darwin \
---icon=src/assets/img/Chia.icns --overwrite --app-bundle-id=$APP_BUNDLEID \
+--icon=src/assets/img/coffee.icns --overwrite --app-bundle-id=$APP_BUNDLEID \
 --appVersion=$CHIA_INSTALLER_VERSION
 LAST_EXIT_CODE=$?
 
