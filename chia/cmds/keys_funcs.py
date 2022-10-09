@@ -21,7 +21,7 @@ def generate_and_print():
     mnemonic = generate_mnemonic()
     print("Generating private key. Mnemonic (24 secret words):")
     print(mnemonic)
-    print("Note that this key has not been added to the keychain. Run sit keys add")
+    print("Note that this key has not been added to the keychain. Run coffee keys add")
     return mnemonic
 
 

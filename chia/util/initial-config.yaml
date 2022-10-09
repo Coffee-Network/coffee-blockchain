@@ -33,13 +33,13 @@ network_overrides: &network_overrides
       NUMBER_ZERO_BITS_PLOT_FILTER: 5
   config:
     mainnet:
-      address_prefix: "sit"
+      address_prefix: "xcf"
       default_full_node_port: 22222
     testnet:
-      address_prefix: "tsit"
+      address_prefix: "txcf"
       default_full_node_port: 22222
     devnet:
-      address_prefix: "tsit"
+      address_prefix: "txcf"
       default_full_node_port: 12444
 
 selected_network: &selected_network "mainnet"

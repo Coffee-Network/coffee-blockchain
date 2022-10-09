@@ -129,4 +129,4 @@ echo "https://github.com/silicoin-network/silicoin-blockchain/wiki/Quick-Start-G
 echo ""
 echo "To install the GUI type 'sh install-gui.sh' after '. ./activate'."
 echo ""
-echo "Type '. ./activate' and then 'sit init' to begin."
+echo "Type '. ./activate' and then 'coffee init' to begin."

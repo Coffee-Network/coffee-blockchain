@@ -319,12 +319,12 @@ async def summary(
     if amounts is None:
         if wallet_not_running:
             print(
-                "For details on farmed rewards and fees you should run 'sit start wallet' and 'sit wallet show'"
+                "For details on farmed rewards and fees you should run 'coffee start wallet' and 'coffee wallet show'"
             )
         elif wallet_not_ready:
-            print("For details on farmed rewards and fees you should run 'sit wallet show'")
+            print("For details on farmed rewards and fees you should run 'coffee wallet show'")
     else:
-        print("Note: log into your key using 'sit wallet show' to see rewards for each key")
+        print("Note: log into your key using 'coffee wallet show' to see rewards for each key")
 
 
 async def get_est_staking_factor(total_plot_size, total_staking_balance) -> Decimal:

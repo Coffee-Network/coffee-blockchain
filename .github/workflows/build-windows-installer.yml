@@ -149,7 +149,7 @@ jobs:
     #   uses: actions/upload-artifact@v2.2.2
     #   with:
     #     name: Windows-Exe
-    #     path: ${{ github.workspace }}\coffee-blockchain-gui\SIT-win32-x64\
+    #     path: ${{ github.workspace }}\coffee-blockchain-gui\Coffee-win32-x64\
 
     - name: Upload Installer to artifacts
       uses: actions/upload-artifact@v2.2.2
@@ -177,13 +177,13 @@ jobs:
     #     CHIA_INSTALLER_VERSION: ${{ steps.version_number.outputs.CHIA_INSTALLER_VERSION }}
     #   run: |
     #     ls ${{ github.workspace }}\coffee-blockchain-gui\release-builds\windows-installer\
-    #     aws s3 cp ${{ github.workspace }}\coffee-blockchain-gui\release-builds\windows-installer\SITSetup-${{ steps.version_number.outputs.CHIA_INSTALLER_VERSION }}.exe s3://download-chia-net/builds/
+    #     aws s3 cp ${{ github.workspace }}\coffee-blockchain-gui\release-builds\windows-installer\CoffeeSetup-${{ steps.version_number.outputs.CHIA_INSTALLER_VERSION }}.exe s3://download-chia-net/builds/
 
     - name: Create Checksums
       env:
         CHIA_INSTALLER_VERSION: ${{ steps.version_number.outputs.CHIA_INSTALLER_VERSION }}
       run: |
-         certutil.exe -hashfile ${{ github.workspace }}\coffee-blockchain-gui\release-builds\windows-installer\SITSetup-${{ steps.version_number.outputs.CHIA_INSTALLER_VERSION }}.exe SHA256 > ${{ github.workspace }}\coffee-blockchain-gui\release-builds\windows-installer\SITSetup-${{ steps.version_number.outputs.CHIA_INSTALLER_VERSION }}.exe.sha256
+         certutil.exe -hashfile ${{ github.workspace }}\coffee-blockchain-gui\release-builds\windows-installer\CoffeeSetup-${{ steps.version_number.outputs.CHIA_INSTALLER_VERSION }}.exe SHA256 > ${{ github.workspace }}\coffee-blockchain-gui\release-builds\windows-installer\CoffeeSetup-${{ steps.version_number.outputs.CHIA_INSTALLER_VERSION }}.exe.sha256
          ls ${{ github.workspace }}\coffee-blockchain-gui\release-builds\windows-installer\
 
     # - name: Install py3createtorrent
@@ -194,7 +194,7 @@ jobs:
     # - name: Create torrent
     #   if: startsWith(github.ref, 'refs/tags/')
     #   run: |
-    #     py3createtorrent -f -t udp://tracker.opentrackr.org:1337/announce ${{ github.workspace }}\coffee-blockchain-gui\release-builds\windows-installer\SITSetup-${{ steps.version_number.outputs.CHIA_INSTALLER_VERSION }}.exe -o ${{ github.workspace }}\coffee-blockchain-gui\release-builds\windows-installer\SITSetup-${{ steps.version_number.outputs.CHIA_INSTALLER_VERSION }}.exe.torrent --webseed https://download-chia-net.s3.us-west-2.amazonaws.com/install/SITSetup-${{ steps.version_number.outputs.CHIA_INSTALLER_VERSION }}.exe
+    #     py3createtorrent -f -t udp://tracker.opentrackr.org:1337/announce ${{ github.workspace }}\coffee-blockchain-gui\release-builds\windows-installer\CoffeeSetup-${{ steps.version_number.outputs.CHIA_INSTALLER_VERSION }}.exe -o ${{ github.workspace }}\coffee-blockchain-gui\release-builds\windows-installer\CoffeeSetup-${{ steps.version_number.outputs.CHIA_INSTALLER_VERSION }}.exe.torrent --webseed https://download-chia-net.s3.us-west-2.amazonaws.com/install/CoffeeSetup-${{ steps.version_number.outputs.CHIA_INSTALLER_VERSION }}.exe
     #     ls
 
     # - name: Upload Beta Installer
@@ -202,8 +202,8 @@ jobs:
     #   env:
     #     CHIA_INSTALLER_VERSION: ${{ steps.version_number.outputs.CHIA_INSTALLER_VERSION }}
     #   run: |
-    #     aws s3 cp ${{ github.workspace }}\coffee-blockchain-gui\release-builds\windows-installer\SITSetup-${{ steps.version_number.outputs.CHIA_INSTALLER_VERSION }}.exe s3://download-chia-net/beta/SITSetup-latest-beta.exe
-    #     aws s3 cp ${{ github.workspace }}\coffee-blockchain-gui\release-builds\windows-installer\SITSetup-${{ steps.version_number.outputs.CHIA_INSTALLER_VERSION }}.exe.sha256 s3://download-chia-net/beta/SITSetup-latest-beta.exe.sha256
+    #     aws s3 cp ${{ github.workspace }}\coffee-blockchain-gui\release-builds\windows-installer\CoffeeSetup-${{ steps.version_number.outputs.CHIA_INSTALLER_VERSION }}.exe s3://download-chia-net/beta/CoffeeSetup-latest-beta.exe
+    #     aws s3 cp ${{ github.workspace }}\coffee-blockchain-gui\release-builds\windows-installer\CoffeeSetup-${{ steps.version_number.outputs.CHIA_INSTALLER_VERSION }}.exe.sha256 s3://download-chia-net/beta/CoffeeSetup-latest-beta.exe.sha256
 
     # - name: Upload Release Files
     #   if: steps.check_secrets.outputs.HAS_AWS_SECRET && startsWith(github.ref, 'refs/tags/')
@@ -211,9 +211,9 @@ jobs:
     #     AWS_ACCESS_KEY_ID: ${{ secrets.INSTALLER_UPLOAD_KEY }}
     #     AWS_SECRET_ACCESS_KEY: ${{ secrets.INSTALLER_UPLOAD_SECRET }}
     #   run: |
-    #     aws s3 cp ${{ github.workspace }}\coffee-blockchain-gui\release-builds\windows-installer\SITSetup-${{ steps.version_number.outputs.CHIA_INSTALLER_VERSION }}.exe s3://download-chia-net/install/
-    #     aws s3 cp ${{ github.workspace }}\coffee-blockchain-gui\release-builds\windows-installer\SITSetup-${{ steps.version_number.outputs.CHIA_INSTALLER_VERSION }}.exe.sha256 s3://download-chia-net/install/
-    #     aws s3 cp ${{ github.workspace }}\coffee-blockchain-gui\release-builds\windows-installer\SITSetup-${{ steps.version_number.outputs.CHIA_INSTALLER_VERSION }}.exe.torrent s3://download-chia-net/torrents/
+    #     aws s3 cp ${{ github.workspace }}\coffee-blockchain-gui\release-builds\windows-installer\CoffeeSetup-${{ steps.version_number.outputs.CHIA_INSTALLER_VERSION }}.exe s3://download-chia-net/install/
+    #     aws s3 cp ${{ github.workspace }}\coffee-blockchain-gui\release-builds\windows-installer\CoffeeSetup-${{ steps.version_number.outputs.CHIA_INSTALLER_VERSION }}.exe.sha256 s3://download-chia-net/install/
+    #     aws s3 cp ${{ github.workspace }}\coffee-blockchain-gui\release-builds\windows-installer\CoffeeSetup-${{ steps.version_number.outputs.CHIA_INSTALLER_VERSION }}.exe.torrent s3://download-chia-net/torrents/
 
     - name: Get tag name
       if: startsWith(github.ref, 'refs/tags/')

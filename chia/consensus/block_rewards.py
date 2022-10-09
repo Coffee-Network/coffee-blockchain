@@ -1,6 +1,6 @@
 from chia.util.ints import uint32, uint64
 
-# 1 Sit coin = 1,000,000,000,000 = 1 trillion mojo.
+# 1 XCF coin = 1,000,000,000,000 = 1 trillion mojo.
 _mojo_per_chia = 1000000000000
 _blocks_per_year = 1681920  # 32 * 6 * 24 * 365
 

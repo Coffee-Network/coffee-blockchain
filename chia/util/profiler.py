@@ -6,7 +6,7 @@ import pathlib
 from chia.util.path import mkdir, path_from_root
 
 # to use the profiler, enable it config file, "enable_profiler"
-# the output will be printed to your silicoin root path, e.g. ~/.sit/mainnet/profile/
+# the output will be printed to your silicoin root path, e.g. ~/.coffee/mainnet/profile/
 # to analyze the profile, run:
 
 #   python chia/utils/profiler.py ~/.chia/mainnet/profile | less -r

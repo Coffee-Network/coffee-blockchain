@@ -185,7 +185,7 @@ jobs:
         CHIA_INSTALLER_VERSION: ${{ steps.version_number.outputs.CHIA_INSTALLER_VERSION }}
       run: |
          ls ${{ github.workspace }}/build_scripts/final_installer/
-         sha256sum ${{ github.workspace }}/build_scripts/final_installer/sit_${CHIA_INSTALLER_VERSION}_amd64.deb > ${{ github.workspace }}/build_scripts/final_installer/sit_${CHIA_INSTALLER_VERSION}_amd64.deb.sha256
+         sha256sum ${{ github.workspace }}/build_scripts/final_installer/coffee_${COFFEE_INSTALLER_VERSION}_amd64.deb > ${{ github.workspace }}/build_scripts/final_installer/coffee_${COFFEE_INSTALLER_VERSION}_amd64.deb.sha256
          ls ${{ github.workspace }}/build_scripts/final_installer/
 
     # - name: Install py3createtorrent

@@ -1,19 +1,19 @@
 from typing import Generator, KeysView
 
 SERVICES_FOR_GROUP = {
-    "all": "sit_harvester sit_timelord_launcher sit_timelord sit_farmer sit_full_node sit_wallet".split(),
-    "node": "sit_full_node".split(),
-    "harvester": "sit_harvester".split(),
-    "farmer": "sit_harvester sit_farmer sit_full_node sit_wallet".split(),
-    "farmer-no-wallet": "sit_harvester sit_farmer sit_full_node".split(),
-    "farmer-only": "sit_farmer".split(),
-    "timelord": "sit_timelord_launcher sit_timelord sit_full_node".split(),
-    "timelord-only": "sit_timelord".split(),
-    "timelord-launcher-only": "sit_timelord_launcher".split(),
-    "wallet": "sit_wallet sit_full_node".split(),
-    "wallet-only": "sit_wallet".split(),
-    "introducer": "sit_introducer".split(),
-    "simulator": "sit_full_node_simulator".split(),
+    "all": "coffee_harvester coffee_timelord_launcher coffee_timelord coffee_farmer coffee_full_node coffee_wallet".split(),
+    "node": "coffee_full_node".split(),
+    "harvester": "coffee_harvester".split(),
+    "farmer": "coffee_harvester coffee_farmer coffee_full_node coffee_wallet".split(),
+    "farmer-no-wallet": "coffee_harvester coffee_farmer coffee_full_node".split(),
+    "farmer-only": "coffee_farmer".split(),
+    "timelord": "coffee_timelord_launcher coffee_timelord coffee_full_node".split(),
+    "timelord-only": "coffee_timelord".split(),
+    "timelord-launcher-only": "coffee_timelord_launcher".split(),
+    "wallet": "coffee_wallet coffee_full_node".split(),
+    "wallet-only": "coffee_wallet".split(),
+    "introducer": "coffee_introducer".split(),
+    "simulator": "coffee_full_node_simulator".split(),
 }
 
 

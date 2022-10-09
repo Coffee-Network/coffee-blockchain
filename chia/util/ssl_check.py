@@ -143,7 +143,7 @@ def check_ssl(root_path: Path) -> None:
                 get_ssl_perm_warning(path, actual_permissions, expected_permissions)
             )  # lgtm [py/clear-text-logging-sensitive-data]
         print("One or more SSL files were found with permission issues.")
-        print("Run `sit init --fix-ssl-permissions` to fix issues.")
+        print("Run `coffee init --fix-ssl-permissions` to fix issues.")
 
 
 def check_and_fix_permissions_for_ssl_file(file: Path, mask: int, updated_mode: int) -> Tuple[bool, bool]:

@@ -56,7 +56,7 @@ except ImportError:
 
 log = logging.getLogger(__name__)
 
-service_plotter = "sit plots create"
+service_plotter = "coffee plots create"
 
 
 async def fetch(url: str):
@@ -89,15 +89,15 @@ class PlotEvent(str, Enum):
 # determine if application is a script file or frozen exe
 if getattr(sys, "frozen", False):
     name_map = {
-        "sit": "sit",
-        "sit_wallet": "start_wallet",
-        "sit_full_node": "start_full_node",
-        "sit_harvester": "start_harvester",
-        "sit_farmer": "start_farmer",
-        "sit_introducer": "start_introducer",
-        "sit_timelord": "start_timelord",
-        "sit_timelord_launcher": "timelord_launcher",
-        "sit_full_node_simulator": "start_simulator",
+        "coffee": "coffee",
+        "coffee_wallet": "start_wallet",
+        "coffee_full_node": "start_full_node",
+        "coffee_harvester": "start_harvester",
+        "coffee_farmer": "start_farmer",
+        "coffee_introducer": "start_introducer",
+        "coffee_timelord": "start_timelord",
+        "coffee_timelord_launcher": "timelord_launcher",
+        "coffee_full_node_simulator": "start_simulator",
     }
 
     def executable_for_service(service_name: str) -> str:
@@ -1394,7 +1394,7 @@ async def async_run_daemon(root_path: Path, wait_for_unlock: bool = False) -> in
     # since it might be necessary to wait for the GUI to unlock the keyring first.
     chia_init(root_path, should_check_keys=(not wait_for_unlock))
     config = load_config(root_path, "config.yaml")
-    setproctitle("sit_daemon")
+    setproctitle("coffee_daemon")
     initialize_logging("daemon", config["logging"], root_path)
     lockfile = singleton(daemon_launch_lock_path(root_path))
     crt_path = root_path / config["daemon_ssl"]["private_crt"]

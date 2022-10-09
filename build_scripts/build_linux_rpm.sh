@@ -1,7 +1,7 @@
 #!/bin/bash
 
 APP_BUNDLEID="net.silicoin.blockchain"
-APP_NAME="SIT"
+APP_NAME="Coffee"
 
 if [ ! "$1" ]; then
   echo "This script requires either amd64 of arm64 as an argument"

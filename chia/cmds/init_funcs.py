@@ -66,7 +66,7 @@ def check_keys(new_root: Path, keychain: Optional[Keychain] = None) -> None:
         keychain = Keychain()
     all_sks = keychain.get_all_private_keys()
     if len(all_sks) == 0:
-        print("No keys are present in the keychain. Generate them with 'sit keys generate'")
+        print("No keys are present in the keychain. Generate them with 'coffee keys generate'")
         return None
 
     config: Dict = load_config(new_root, "config.yaml")
@@ -356,13 +356,13 @@ def chia_init(
     if os.environ.get("CHIA_ROOT", None) is not None:
         print(
             f"warning, your CHIA_ROOT is set to {os.environ['CHIA_ROOT']}. "
-            f"Please unset the environment variable and run sit init again\n"
+            f"Please unset the environment variable and run coffee init again\n"
             f"or manually migrate config.yaml"
         )
 
     print(f"Silicoin directory {root_path}")
     if root_path.is_dir() and Path(root_path / "config" / "config.yaml").exists():
-        # This is reached if CHIA_ROOT is set, or if user has run sit init twice
+        # This is reached if CHIA_ROOT is set, or if user has run coffee init twice
         # before a new update.
         if testnet:
             configure(root_path, "", "", "", "", "", "", "", "", testnet="true", peer_connect_timeout="")
@@ -382,6 +382,6 @@ def chia_init(
     if should_check_keys:
         check_keys(root_path)
     print("")
-    print("To see your keys, run 'sit keys show --show-mnemonic-seed'")
+    print("To see your keys, run 'coffee keys show --show-mnemonic-seed'")
 
     return 0
