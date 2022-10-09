@@ -1,6 +1,6 @@
 #!/bin/bash
 
-APP_BUNDLEID="net.silicoin.blockchain"
+APP_BUNDLEID="net.coffee.blockchain"
 APP_NAME="Coffee"
 
 if [ ! "$1" ]; then

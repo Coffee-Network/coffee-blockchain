@@ -4,13 +4,13 @@ export NODE_OPTIONS="--max-old-space-size=3000"
 
 
 if [ -z "$VIRTUAL_ENV" ]; then
-  echo "This requires the silicoin python virtual environment."
+  echo "This requires the coffee python virtual environment."
   echo "Execute '. ./activate' before running."
 	exit 1
 fi
 
 if [ "$(id -u)" = 0 ]; then
-  echo "The Silicoin Blockchain GUI can not be installed or run by the root user."
+  echo "The Coffee Blockchain GUI can not be installed or run by the root user."
 	exit 1
 fi
 
@@ -111,6 +111,6 @@ else
 fi
 
 echo ""
-echo "Silicoin blockchain install-gui.sh completed."
+echo "Coffee blockchain install-gui.sh completed."
 echo ""
 echo "Type 'cd coffee-blockchain-gui' and then 'npm run electron &' to start the GUI."

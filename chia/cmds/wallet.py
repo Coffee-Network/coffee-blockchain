@@ -98,7 +98,7 @@ def get_transactions_cmd(
 )
 @click.option("-f", "--fingerprint", help="Set the fingerprint to specify which wallet to use", type=int)
 @click.option("-i", "--id", help="Id of the wallet to use", type=int, default=1, show_default=True, required=True)
-@click.option("-a", "--amount", help="How much silicoin to send, in XCF", type=str, required=True)
+@click.option("-a", "--amount", help="How much coffee to send, in XCF", type=str, required=True)
 @click.option(
     "-m",
     "--fee",
@@ -146,7 +146,7 @@ def send_cmd(
 @click.option("-i", "--id", help="Id of the wallet to use", type=int, default=1, show_default=True, required=True)
 @click.option("-s", "--source", help="Address to send the XCF", type=str, required=True)
 @click.option("-t", "--address", help="Target address to receive the XCF", type=str, required=True)
-@click.option("-a", "--amount", help="How much Silicoin to send, in XCF", type=str, required=True)
+@click.option("-a", "--amount", help="How much Coffee to send, in XCF", type=str, required=True)
 def send_from_cmd(
     rpc_port: Optional[int],
     wallet_rpc_port: Optional[int],
@@ -259,7 +259,7 @@ async def do_recover_pool_nft(contract_hash: str, launcher_hash: str, fingerprin
 )
 @click.option(
     "--launcher-hash",
-    help="Set the launcher hash, you should get it from silicoin wallet",
+    help="Set the launcher hash, you should get it from coffee wallet",
     type=str,
     default=None,
 )

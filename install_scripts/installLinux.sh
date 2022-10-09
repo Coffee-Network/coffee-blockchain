@@ -9,7 +9,7 @@ fi
 
 pip install --upgrade pip
 pip install -i https://hosted.coffee.net/simple/ miniupnpc==2.1 setproctitle==1.1.10
-pip install git+https://github.com/silicoin-network/silicoin-blockchain.git@v1.2.2
+pip install git+https://github.com/coffee-network/coffee-blockchain.git@v1.2.2
 
 
 echo -e "\n===================================================="

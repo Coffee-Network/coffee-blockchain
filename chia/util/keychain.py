@@ -16,7 +16,7 @@ from coffee.util.hash import std_hash
 from coffee.util.keyring_wrapper import KeyringWrapper
 
 CURRENT_KEY_VERSION = "1.8"
-DEFAULT_USER = f"user-silicoin-{CURRENT_KEY_VERSION}"  # e.g. user-coffee-1.8
+DEFAULT_USER = f"user-coffee-{CURRENT_KEY_VERSION}"  # e.g. user-coffee-1.8
 DEFAULT_SERVICE = f"coffee-{DEFAULT_USER}"  # e.g. coffee-user-coffee-1.8
 DEFAULT_PASSPHRASE_PROMPT = (
     colorama.Fore.YELLOW + colorama.Style.BRIGHT + "(Unlock Keyring)" + colorama.Style.RESET_ALL + " Passphrase: "

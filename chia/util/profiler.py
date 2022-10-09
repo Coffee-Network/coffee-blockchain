@@ -6,12 +6,12 @@ import pathlib
 from coffee.util.path import mkdir, path_from_root
 
 # to use the profiler, enable it config file, "enable_profiler"
-# the output will be printed to your silicoin root path, e.g. ~/.coffee/mainnet/profile/
+# the output will be printed to your coffee root path, e.g. ~/.coffee/mainnet/profile/
 # to analyze the profile, run:
 
 #   python coffee/utils/profiler.py ~/.coffee/mainnet/profile | less -r
 
-# this will print CPU usage of the silicoin full node main thread at 1 second increments.
+# this will print CPU usage of the coffee full node main thread at 1 second increments.
 # find a time window of interest and analyze the profile file (which are in pstats format).
 
 # for example:

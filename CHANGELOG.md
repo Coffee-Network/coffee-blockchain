@@ -655,7 +655,7 @@ Batch process weight proof epochs in groups of 900 to fit below May 2020 sqlite 
 - Found and fixed another green flag related issue
 - Fixed an issue with weight proofs where all sub-epochs were sampled, and the size of the weight proof kept growing
 - Fixed an issue with install-gui.sh, where npm audit fix was failing. (Thanks @Depado!)
-- Migration with COFFEE_ROOT set does not crash silicoin init
+- Migration with COFFEE_ROOT set does not crash coffee init
 
 ## 1.0rc8 aka Release Candidate 8 - 2021-03-15
 
@@ -835,7 +835,7 @@ Batch process weight proof epochs in groups of 900 to fit below May 2020 sqlite 
 - The application is now more aware of whether it is running a testnet or mainnet. This impacts wallet's display behavior and certain blockchain validation rules.
 - Interface improvements for `coffee netspace`.
 - Now that aiosqlite included our upstream improvements we install version 0.17.0.
-- `silicoin init` only migrates release candidate directories. The versioned sub directories under `~/coffee` will be going away before mainnet.
+- `coffee init` only migrates release candidate directories. The versioned sub directories under `~/coffee` will be going away before mainnet.
 
 ### Fixed
 
@@ -869,8 +869,8 @@ Batch process weight proof epochs in groups of 900 to fit below May 2020 sqlite 
 
 - This is the first release in our release candidate series. There are still a few things that will change at the edges but the blockchain, clvm, and chialisp are in release form. We have one major change to chialisp/clvm that we have chosen to schedule for the next release as in this release we're breaking the way q/quote works. We also have one more revision to the VDF that will decrease the sizes of the proofs of time. We expect a few more releases in the release candidate series.
 - Installers will now be of the pattern CoffeeSetup-0.2.1.exe. `0.2` is release candidate and the final `.1` is the first release candidate.
-- Use 'silicoin wallet get_transactions' in the command line to see your transactions.
-- 'silicoin wallet show' now shows your wallet's height.
+- Use 'coffee wallet get_transactions' in the command line to see your transactions.
+- 'coffee wallet show' now shows your wallet's height.
 - Last Attempted Proof is now above Latest Block Challenge on the Farm page of the GUI.
 - The GUI now detects duplicate plots and also only counts unique plots and unique plot size.
 - We have integrated with crowdin to make it easier to translate the GUI. Check out [Coffee Blockchain GUI](https://crowdin.com/project/coffee-blockchain) there.
@@ -885,7 +885,7 @@ validation was changed to allow blocks like these to be made. This will enable c
 - Sub blocks renamed to blocks, and blocks renamed to transaction blocks, everywhere. This effects the RPC, now
 all fields that referred to sub blocks are changed to blocks.
 - Base difficulty and weight have increased, so difficulty of "5" in the rc1 testnet will be equivalent to "21990232555520" in the previous testnet.
-- 'silicoin wallet send' now takes in TXCH or XCH as units instead of mojos.
+- 'coffee wallet send' now takes in TXCH or XCH as units instead of mojos.
 - Transactions have been further sped up.
 - The blockchain database has more careful validation.
 - The GUI is now using bech32m.
@@ -907,7 +907,7 @@ all fields that referred to sub blocks are changed to blocks.
 - You can now send and receive transactions with the command line. Try `coffee wallet -h` to learn more. Also, `coffee wallet` now requires a third argument of `show`, therefor you will use `coffee wallet show` to see your wallet balance.
 - We have added the [Crowdin](https://crowdin.com/) translation platform to [coffee blockchain gui](https://crowdin.com/project/coffee-blockchain). We are still getting it fully set up, but helping to translate the GUI is going to be much easier.
 - Full Node > Connections in the GUI now shows the peak sub block height your connected peers believe they are at. A node syncing from you will not be at the true peak sub block height until it gets into sync.
-- `silicoin init -c [directory]` will create new TLS certificates signed by your CA located in `[directory]`. Use this feature to configure a new remote harvester. Type `silicoin init -h` to get instructions. Huge thanks to a very efficient @eFishCent for this quick and thorough pull request.
+- `coffee init -c [directory]` will create new TLS certificates signed by your CA located in `[directory]`. Use this feature to configure a new remote harvester. Type `coffee init -h` to get instructions. Huge thanks to a very efficient @eFishCent for this quick and thorough pull request.
 - We build both MacOS x86_64 and MacOS universal wheels for chiapos, chiavdf, blpsy, and chiabip158 in Python 3.9. The universal build allows M1 Macs to run these dependencies in ARM64 native mode.
 - On first run in the GUI (or when there are no plot directories) there is now an "Add Plot Directories" on the Farm tab also.
 
@@ -1285,7 +1285,7 @@ all fields that referred to sub blocks are changed to blocks.
 - Coloured coins have been updated to simplify them, remove 'a', and stop using an 'auditor'.
 - clvm has been significantly changed to support the new coloured coins implementation.
 - Bumped cryptography to 3.1. Cryptography is now publishing ARM64 binary wheels to PyPi so Raspberry Pi installs should be even easier.
-- `silicoin init` now automatically discovers previous releases in each new release.
+- `coffee init` now automatically discovers previous releases in each new release.
 
 ### Fixed
 
@@ -1527,7 +1527,7 @@ relic. We will make a patch available for these systems shortly.
 - Windows and MacOS now have one click installers that then send users to a GUI on both platforms to farm or use their wallets. Windows is built on GitHub Actions and MacOS is also built on Azure Pipelines so as to build on Mojave.
 - You can see and control your farmer, harvester, and plotter from the GUI on Windows, MacOS, and Linux.
 - Create plots and see the plotting log from a GUI on Windows, MacOS, and Linux.
-- You can now create or import private keys with a 24 word mnemonic, both in the UI and 'silicoin keys' command line.
+- You can now create or import private keys with a 24 word mnemonic, both in the UI and 'coffee keys' command line.
 - You can delete and change active keys from the GUI and cli.
 - We added a new keychain system that replaces keys.yaml, and migrates existing users from keys.yaml. It utilizes each OS's keychain for slightly more secure key storage.
 - We added a `coffee keys` command line program, to see, add, and remove private keys.
@@ -1577,7 +1577,7 @@ relic. We will make a patch available for these systems shortly.
 
 ### Changed
 
-- `silicoin init` properly migrates from previous versions including the k>=32 workaround. Additionally, the farming target key is checked to make sure that it is the valid and correct public key format.
+- `coffee init` properly migrates from previous versions including the k>=32 workaround. Additionally, the farming target key is checked to make sure that it is the valid and correct public key format.
 - We have implemented a workaround for the `coffee start` issues some were having upon crash or reboot. We will be rebuilding start and stop to be robust across platforms.
 - This release re-includes `coffee-start-harvester`.
 - Coloured coins now have a prefix to help identify them. When sending transactions, the new prefix is incompatible with older clients.
@@ -1592,7 +1592,7 @@ relic. We will make a patch available for these systems shortly.
 
 ### Deprecated
 
-- We have made significant changes to the full node database to make it more reliable and quicker to restart. This requires re-syncing the current chain. If you use `silicoin init` then sync on first start will happen automatically. "\$COFFEE_ROOT" users will need to delete `$COFFEE_ROOT/db/*` before starting Beta 1.5. This also fixes the simulation issue in Beta 1.4 where tips could go "back in time."
+- We have made significant changes to the full node database to make it more reliable and quicker to restart. This requires re-syncing the current chain. If you use `coffee init` then sync on first start will happen automatically. "\$COFFEE_ROOT" users will need to delete `$COFFEE_ROOT/db/*` before starting Beta 1.5. This also fixes the simulation issue in Beta 1.4 where tips could go "back in time."
 
 ### Known issues
 
@@ -1608,7 +1608,7 @@ relic. We will make a patch available for these systems shortly.
 - We made some speed improvements that positively affected all platforms while trying to increase plotting speed in Windows.
 - The graphical Full Node display now shows the expected finish times of each of the prospective chain tips.
 - Now you can run estimates of the total space currently farming the network. Try `coffee netspace -d 12` to run an estimate over the last 12 blocks which is approximately 1 hour.
-- We’ve added TLS authentication for incoming farmer connections. TLS certs and keys are generated during silicoin init and only full nodes with your keys will be able to connect to your Farmer. Also, Harvester, Timelord, and Wallet will now not accept incoming connections which reduces the application attack surface.
+- We’ve added TLS authentication for incoming farmer connections. TLS certs and keys are generated during coffee init and only full nodes with your keys will be able to connect to your Farmer. Also, Harvester, Timelord, and Wallet will now not accept incoming connections which reduces the application attack surface.
 - The node RPC has a new endpoint get_header_by_height which allows you to retrieve the block header from a block height. Try `coffee show -bh 1000` to see the block header hash of block 1000. You can then look up the block details with `coffee show -b f655e1a9f7f8c89a703e40d9ce82ae33508badaf7b37fa1a56cad27926b5e936` which will look up a block by it's header hash.
 - Our Windows binaries check the processor they are about to run on at runtime and choose the best processor optimizations for our [MPIR](http://mpir.org/) VDF dependency on Windows.
 - Most of the content of README.md and INSTALL.md have been moved to the [repository wiki](https://github.com/Chia-Network/coffee-blockchain/wiki) and placed in [INSTALL](https://github.com/Chia-Network/coffee-blockchain/wiki/INSTALL) and [Quick Start Guide](https://github.com/Chia-Network/coffee-blockchain/wiki/Quick-Start-Guide)
@@ -1645,7 +1645,7 @@ relic. We will make a patch available for these systems shortly.
 - Windows, WSL 2, Linux and MacOS installation is significantly streamlined. There is a new Windows installer for the Wallet GUI (huge thanks to @dkackman).
 - All installs can now be from the source repository or just the binary dependencies on WSL 2, most modern Linuxes, and MacOS Catalina. Binary support is for both Python 3.7 and 3.8.
 - There is a new migration tool to move from Beta1 (or 2) to Beta3. It should move everything except your plots.
-- There is a new command `silicoin init` that will migrate files and generate your initial configuration. If you want to use the Wallet or farm, you will also have to `coffee-generate-keys`. You can read step by step instructions for [upgrading from a previous beta release](https://github.com/Chia-Network/coffee-blockchain/wiki/Updating-beta-software). If you've set `$COFFEE_ROOT` you will have to make sure your existing configuration remains compatible manually.
+- There is a new command `coffee init` that will migrate files and generate your initial configuration. If you want to use the Wallet or farm, you will also have to `coffee-generate-keys`. You can read step by step instructions for [upgrading from a previous beta release](https://github.com/Chia-Network/coffee-blockchain/wiki/Updating-beta-software). If you've set `$COFFEE_ROOT` you will have to make sure your existing configuration remains compatible manually.
 - Wallet has improved paper wallet recovery support.
 - We now also support restoring old wallets with only the wallet_sk and wallet_target. Beta3's Wallet will re-sync from scratch.
 - We've made lots of little improvements that should speed up node syncing

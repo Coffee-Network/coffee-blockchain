@@ -1,6 +1,6 @@
 [submodule "coffee-blockchain-gui"]
 	path = coffee-blockchain-gui
-	url = https://github.com/silicoin-network/silicoin-blockchain-gui.git
+	url = https://github.com/coffee-network/coffee-blockchain-gui.git
 	branch = main
 [submodule "mozilla-ca"]
 	path = mozilla-ca

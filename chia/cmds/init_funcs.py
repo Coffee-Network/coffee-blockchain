@@ -360,7 +360,7 @@ def coffee_init(
             f"or manually migrate config.yaml"
         )
 
-    print(f"Silicoin directory {root_path}")
+    print(f"Coffee directory {root_path}")
     if root_path.is_dir() and Path(root_path / "config" / "config.yaml").exists():
         # This is reached if COFFEE_ROOT is set, or if user has run coffee init twice
         # before a new update.

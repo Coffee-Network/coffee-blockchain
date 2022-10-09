@@ -81,7 +81,7 @@ def prompt_to_save_passphrase() -> bool:
             print(
                 "\n"
                 "Your passphrase can be stored in your system's secure credential store. "
-                "Other Silicoin processes will be able to access your keys without prompting for your passphrase."
+                "Other Coffee processes will be able to access your keys without prompting for your passphrase."
             )
             if warning is not None:
                 colorama.init()

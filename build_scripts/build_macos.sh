@@ -1,6 +1,6 @@
 #!/bin/bash
 
-APP_BUNDLEID="net.silicoin.blockchain"
+APP_BUNDLEID="net.coffee.blockchain"
 APP_NAME="Coffee"
 DIR_NAME=$APP_NAME-darwin-x64
 

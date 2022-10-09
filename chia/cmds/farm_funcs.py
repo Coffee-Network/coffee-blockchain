@@ -237,7 +237,7 @@ async def summary(
         print("Farming")
 
     if amounts is not None:
-        print(f"Total silicoin farmed: {amounts['farmed_amount'] / units['coffee']}")
+        print(f"Total coffee farmed: {amounts['farmed_amount'] / units['coffee']}")
         print(f"User transaction fees: {amounts['fee_amount'] / units['coffee']}")
         print(f"Block rewards: {(amounts['farmer_reward_amount'] + amounts['pool_reward_amount']) / units['coffee']}")
         print(f"Last height farmed: {amounts['last_height_farmed']}")

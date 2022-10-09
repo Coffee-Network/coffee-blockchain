@@ -151,7 +151,7 @@ def configure(
         change_made = True
 
     if change_made:
-        print("Restart any running silicoin services for changes to take effect")
+        print("Restart any running coffee services for changes to take effect")
         save_config(root_path, "config.yaml", config)
     return 0
 

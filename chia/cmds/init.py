@@ -25,11 +25,11 @@ def init_cmd(ctx: click.Context, create_certs: str, fix_ssl_permissions: bool, t
     \b
     Follow these steps to create new certificates for a remote harvester:
     - Make a copy of your Farming Machine CA directory: ~/.coffee/[version]/config/ssl/ca
-    - Shut down all silicoin daemon processes with `coffee stop all -d`
+    - Shut down all coffee daemon processes with `coffee stop all -d`
     - Run `coffee init -c [directory]` on your remote harvester,
       where [directory] is the the copy of your Farming Machine CA directory
-    - Get more details on remote harvester on Silicoin wiki:
-      https://github.com/silicoin-network/silicoin-blockchain/wiki/Farming-on-many-machines
+    - Get more details on remote harvester on Coffee wiki:
+      https://github.com/coffee-network/coffee-blockchain/wiki/Farming-on-many-machines
     """
     from pathlib import Path
     from .init_funcs import init
