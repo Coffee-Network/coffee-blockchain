@@ -3,14 +3,14 @@ from typing import Dict, List, Optional
 
 from blspy import G1Element
 
-from chia.consensus.block_record import BlockRecord
-from chia.types.blockchain_format.sized_bytes import bytes32
-from chia.types.blockchain_format.sub_epoch_summary import SubEpochSummary
-from chia.types.blockchain_format.vdf import VDFInfo
-from chia.types.header_block import HeaderBlock
-from chia.types.weight_proof import SubEpochChallengeSegment
-from chia.util.ints import uint32
-from chia.util.network import asyncio_run
+from coffee.consensus.block_record import BlockRecord
+from coffee.types.blockchain_format.sized_bytes import bytes32
+from coffee.types.blockchain_format.sub_epoch_summary import SubEpochSummary
+from coffee.types.blockchain_format.vdf import VDFInfo
+from coffee.types.header_block import HeaderBlock
+from coffee.types.weight_proof import SubEpochChallengeSegment
+from coffee.util.ints import uint32
+from coffee.util.network import asyncio_run
 
 
 class BlockchainInterface:

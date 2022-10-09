@@ -1,5 +1,5 @@
 #
-# THIS FILE IS GENERATED. SEE https://github.com/Chia-Network/chia-blockchain/tree/main/tests#readme
+# THIS FILE IS GENERATED. SEE https://github.com/Chia-Network/coffee-blockchain/tree/main/tests#readme
 #
 name: Ubuntu clvm Test
 
@@ -69,9 +69,9 @@ jobs:
     - name: Link home directory
       run: |
         cd $HOME
-        ln -s $GITHUB_WORKSPACE/.chia
-        echo "$HOME/.chia"
-        ls -al $HOME/.chia
+        ln -s $GITHUB_WORKSPACE/.coffee
+        echo "$HOME/.coffee"
+        ls -al $HOME/.coffee
 
     - name: Install ubuntu dependencies
       run: |
@@ -100,5 +100,5 @@ jobs:
 
 
 #
-# THIS FILE IS GENERATED. SEE https://github.com/Chia-Network/chia-blockchain/tree/main/tests#readme
+# THIS FILE IS GENERATED. SEE https://github.com/Chia-Network/coffee-blockchain/tree/main/tests#readme
 #

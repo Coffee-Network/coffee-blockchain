@@ -15,17 +15,17 @@ else
 fi
 
 pip install setuptools_scm
-# The environment variable CHIA_INSTALLER_VERSION needs to be defined
+# The environment variable COFFEE_INSTALLER_VERSION needs to be defined
 # If the env variable NOTARIZE and the username and password variables are
 # set, this will attempt to Notarize the signed DMG
-CHIA_INSTALLER_VERSION=$(python installer-version.py)
+COFFEE_INSTALLER_VERSION=$(python installer-version.py)
 
-if [ ! "$CHIA_INSTALLER_VERSION" ]; then
-	echo "WARNING: No environment variable CHIA_INSTALLER_VERSION set. Using 0.0.0."
-	CHIA_INSTALLER_VERSION="0.0.0"
+if [ ! "$COFFEE_INSTALLER_VERSION" ]; then
+	echo "WARNING: No environment variable COFFEE_INSTALLER_VERSION set. Using 0.0.0."
+	COFFEE_INSTALLER_VERSION="0.0.0"
 fi
-echo "Chia Installer Version is: $CHIA_INSTALLER_VERSION"
-DEB_NAME="$APP_NAME-$CHIA_INSTALLER_VERSION"
+echo "Coffee Installer Version is: $COFFEE_INSTALLER_VERSION"
+DEB_NAME="$APP_NAME-$COFFEE_INSTALLER_VERSION"
 
 echo "Installing npm and electron packagers"
 npm install electron-packager -g
@@ -37,7 +37,7 @@ mkdir dist
 
 echo "Create executables with pyinstaller"
 pip install pyinstaller==4.5
-SPEC_FILE=$(python -c 'import chia; print(chia.PYINSTALLER_SPEC_PATH)')
+SPEC_FILE=$(python -c 'import coffee; print(coffee.PYINSTALLER_SPEC_PATH)')
 pyinstaller --log-level=INFO "$SPEC_FILE"
 LAST_EXIT_CODE=$?
 if [ "$LAST_EXIT_CODE" -ne 0 ]; then
@@ -59,13 +59,13 @@ if [ "$LAST_EXIT_CODE" -ne 0 ]; then
 	exit $LAST_EXIT_CODE
 fi
 
-# sets the version for chia-blockchain in package.json
+# sets the version for coffee-blockchain in package.json
 cp package.json package.json.orig
-jq --arg VER "$CHIA_INSTALLER_VERSION" '.version=$VER' package.json > temp.json && mv temp.json package.json
+jq --arg VER "$COFFEE_INSTALLER_VERSION" '.version=$VER' package.json > temp.json && mv temp.json package.json
 
 electron-packager . $APP_NAME --asar.unpack="**/daemon/**" --platform=linux \
 --icon=src/assets/img/coffee.icns --overwrite --app-bundle-id=$APP_BUNDLEID \
---appVersion=$CHIA_INSTALLER_VERSION
+--appVersion=$COFFEE_INSTALLER_VERSION
 LAST_EXIT_CODE=$?
 
 # reset the package.json to the original
@@ -83,7 +83,7 @@ echo "Create $DEB_NAME.deb"
 rm -rf final_installer
 mkdir final_installer
 electron-installer-debian --src dist/$DIR_NAME/ --dest final_installer/ \
---arch "$PLATFORM" --options.version $CHIA_INSTALLER_VERSION
+--arch "$PLATFORM" --options.version $COFFEE_INSTALLER_VERSION
 LAST_EXIT_CODE=$?
 if [ "$LAST_EXIT_CODE" -ne 0 ]; then
 	echo >&2 "electron-installer-debian failed!"

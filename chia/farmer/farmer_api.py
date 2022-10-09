@@ -6,26 +6,26 @@ from typing import Any, Callable, Dict, List, Optional, Tuple
 import aiohttp
 from blspy import AugSchemeMPL, G2Element, PrivateKey
 
-import chia.server.ws_connection as ws
-from chia.consensus.network_type import NetworkType
-from chia.consensus.pot_iterations import calculate_iterations_quality, calculate_sp_interval_iters
-from chia.farmer.farmer import Farmer
-from chia.protocols import farmer_protocol, harvester_protocol
-from chia.protocols.harvester_protocol import PoolDifficulty
-from chia.protocols.pool_protocol import (
+import coffee.server.ws_connection as ws
+from coffee.consensus.network_type import NetworkType
+from coffee.consensus.pot_iterations import calculate_iterations_quality, calculate_sp_interval_iters
+from coffee.farmer.farmer import Farmer
+from coffee.protocols import farmer_protocol, harvester_protocol
+from coffee.protocols.harvester_protocol import PoolDifficulty
+from coffee.protocols.pool_protocol import (
     PoolErrorCode,
     PostPartialPayload,
     PostPartialRequest,
     get_current_authentication_token,
 )
-from chia.protocols.protocol_message_types import ProtocolMessageTypes
-from chia.server.outbound_message import NodeType, make_msg
-from chia.server.server import ssl_context_for_root
-from chia.ssl.create_ssl import get_mozilla_ca_crt
-from chia.types.blockchain_format.pool_target import PoolTarget
-from chia.types.blockchain_format.proof_of_space import ProofOfSpace
-from chia.util.api_decorators import api_request, peer_required
-from chia.util.ints import uint32, uint64
+from coffee.protocols.protocol_message_types import ProtocolMessageTypes
+from coffee.server.outbound_message import NodeType, make_msg
+from coffee.server.server import ssl_context_for_root
+from coffee.ssl.create_ssl import get_mozilla_ca_crt
+from coffee.types.blockchain_format.pool_target import PoolTarget
+from coffee.types.blockchain_format.proof_of_space import ProofOfSpace
+from coffee.util.api_decorators import api_request, peer_required
+from coffee.util.ints import uint32, uint64
 
 
 def strip_old_entries(pairs: List[Tuple[float, Any]], before: float) -> List[Tuple[float, Any]]:
@@ -50,7 +50,7 @@ class FarmerAPI:
     @api_request
     @peer_required
     async def new_proof_of_space(
-        self, new_proof_of_space: harvester_protocol.NewProofOfSpace, peer: ws.WSChiaConnection
+        self, new_proof_of_space: harvester_protocol.NewProofOfSpace, peer: ws.WSCoffeeConnection
     ):
         """
         This is a response from the harvester, for a NewChallenge. Here we check if the proof
@@ -425,7 +425,7 @@ class FarmerAPI:
 
     @api_request
     @peer_required
-    async def new_signage_point(self, new_signage_point: farmer_protocol.NewSignagePoint, peer: ws.WSChiaConnection):
+    async def new_signage_point(self, new_signage_point: farmer_protocol.NewSignagePoint, peer: ws.WSCoffeeConnection):
         try:
             pool_difficulties: List[PoolDifficulty] = []
             for p2_singleton_puzzle_hash, pool_dict in self.farmer.pool_state.items():
@@ -525,7 +525,7 @@ class FarmerAPI:
 
     @api_request
     @peer_required
-    async def respond_plots(self, _: harvester_protocol.RespondPlots, peer: ws.WSChiaConnection):
+    async def respond_plots(self, _: harvester_protocol.RespondPlots, peer: ws.WSCoffeeConnection):
         self.farmer.log.warning(f"Respond plots came too late from: {peer.get_peer_logging()}")
 
     @api_request

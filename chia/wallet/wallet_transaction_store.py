@@ -3,13 +3,13 @@ from typing import Dict, List, Optional, Tuple
 
 import aiosqlite
 
-from chia.types.blockchain_format.sized_bytes import bytes32
-from chia.types.mempool_inclusion_status import MempoolInclusionStatus
-from chia.util.db_wrapper import DBWrapper
-from chia.util.errors import Err
-from chia.util.ints import uint8, uint32
-from chia.wallet.transaction_record import TransactionRecord
-from chia.wallet.util.transaction_type import TransactionType
+from coffee.types.blockchain_format.sized_bytes import bytes32
+from coffee.types.mempool_inclusion_status import MempoolInclusionStatus
+from coffee.util.db_wrapper import DBWrapper
+from coffee.util.errors import Err
+from coffee.util.ints import uint8, uint32
+from coffee.wallet.transaction_record import TransactionRecord
+from coffee.wallet.util.transaction_type import TransactionType
 
 
 class WalletTransactionStore:

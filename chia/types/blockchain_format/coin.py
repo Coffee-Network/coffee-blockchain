@@ -1,11 +1,11 @@
 from dataclasses import dataclass
 from typing import Any, List
 
-from chia.types.blockchain_format.sized_bytes import bytes32
-from chia.util.clvm import int_to_bytes
-from chia.util.hash import std_hash
-from chia.util.ints import uint64
-from chia.util.streamable import Streamable, streamable
+from coffee.types.blockchain_format.sized_bytes import bytes32
+from coffee.util.clvm import int_to_bytes
+from coffee.util.hash import std_hash
+from coffee.util.ints import uint64
+from coffee.util.streamable import Streamable, streamable
 
 
 @dataclass(frozen=True)

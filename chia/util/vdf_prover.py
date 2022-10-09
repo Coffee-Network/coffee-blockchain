@@ -2,11 +2,11 @@ from typing import Tuple
 
 from chiavdf import prove
 
-from chia.consensus.constants import ConsensusConstants
-from chia.types.blockchain_format.classgroup import ClassgroupElement
-from chia.types.blockchain_format.sized_bytes import bytes32
-from chia.types.blockchain_format.vdf import VDFInfo, VDFProof
-from chia.util.ints import uint8, uint64
+from coffee.consensus.constants import ConsensusConstants
+from coffee.types.blockchain_format.classgroup import ClassgroupElement
+from coffee.types.blockchain_format.sized_bytes import bytes32
+from coffee.types.blockchain_format.vdf import VDFInfo, VDFProof
+from coffee.util.ints import uint8, uint64
 
 
 def get_vdf_info_and_proof(

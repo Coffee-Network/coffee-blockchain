@@ -3,18 +3,18 @@ import random
 import secrets
 from time import time
 from pathlib import Path
-from chia.full_node.coin_store import CoinStore
+from coffee.full_node.coin_store import CoinStore
 from typing import List, Tuple
 import os
 import sys
 
 import aiosqlite
-from chia.util.db_wrapper import DBWrapper
-from chia.consensus.coinbase import create_farmer_coin, create_pool_coin
-from chia.consensus.default_constants import DEFAULT_CONSTANTS
-from chia.types.blockchain_format.sized_bytes import bytes32
-from chia.types.blockchain_format.coin import Coin
-from chia.util.ints import uint64, uint32
+from coffee.util.db_wrapper import DBWrapper
+from coffee.consensus.coinbase import create_farmer_coin, create_pool_coin
+from coffee.consensus.default_constants import DEFAULT_CONSTANTS
+from coffee.types.blockchain_format.sized_bytes import bytes32
+from coffee.types.blockchain_format.coin import Coin
+from coffee.util.ints import uint64, uint32
 
 
 NUM_ITERS = 200

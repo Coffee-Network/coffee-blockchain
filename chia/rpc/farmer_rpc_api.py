@@ -1,9 +1,9 @@
 from typing import Callable, Dict, List, Optional
 
-from chia.farmer.farmer import Farmer
-from chia.types.blockchain_format.sized_bytes import bytes32
-from chia.util.byte_types import hexstr_to_bytes
-from chia.util.ws_message import WsRpcMessage, create_payload_dict
+from coffee.farmer.farmer import Farmer
+from coffee.types.blockchain_format.sized_bytes import bytes32
+from coffee.util.byte_types import hexstr_to_bytes
+from coffee.util.ws_message import WsRpcMessage, create_payload_dict
 
 
 class FarmerRpcApi:

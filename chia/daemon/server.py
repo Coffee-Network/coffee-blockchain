@@ -15,18 +15,18 @@ from typing import Any, Dict, List, Optional, TextIO, Tuple, cast
 
 from websockets import ConnectionClosedOK, WebSocketException, WebSocketServerProtocol, serve
 
-from chia.cmds.init_funcs import check_keys, chia_init
-from chia.cmds.passphrase_funcs import default_passphrase, using_default_passphrase
-from chia.daemon.keychain_server import KeychainServer, keychain_commands
-from chia.daemon.windows_signal import kill
-from chia.plotters.plotters import get_available_plotters
-from chia.plotting.util import add_plot_directory
-from chia.server.server import ssl_context_for_root, ssl_context_for_server
-from chia.ssl.create_ssl import get_mozilla_ca_crt
-from chia.util.chia_logging import initialize_logging
-from chia.util.config import load_config
-from chia.util.json_util import dict_to_json_str
-from chia.util.keychain import (
+from coffee.cmds.init_funcs import check_keys, coffee_init
+from coffee.cmds.passphrase_funcs import default_passphrase, using_default_passphrase
+from coffee.daemon.keychain_server import KeychainServer, keychain_commands
+from coffee.daemon.windows_signal import kill
+from coffee.plotters.plotters import get_available_plotters
+from coffee.plotting.util import add_plot_directory
+from coffee.server.server import ssl_context_for_root, ssl_context_for_server
+from coffee.ssl.create_ssl import get_mozilla_ca_crt
+from coffee.util.coffee_logging import initialize_logging
+from coffee.util.config import load_config
+from coffee.util.json_util import dict_to_json_str
+from coffee.util.keychain import (
     Keychain,
     KeyringCurrentPassphraseIsInvalid,
     KeyringRequiresMigration,
@@ -34,17 +34,17 @@ from chia.util.keychain import (
     supports_keyring_passphrase,
     supports_os_passphrase_storage,
 )
-from chia.util.path import mkdir
-from chia.util.service_groups import validate_service
-from chia.util.setproctitle import setproctitle
-from chia.util.ws_message import WsRpcMessage, create_payload, format_response
+from coffee.util.path import mkdir
+from coffee.util.service_groups import validate_service
+from coffee.util.setproctitle import setproctitle
+from coffee.util.ws_message import WsRpcMessage, create_payload, format_response
 
 io_pool_exc = ThreadPoolExecutor()
 
 try:
     from aiohttp import ClientSession, web
 except ModuleNotFoundError:
-    print("Error: Make sure to run . ./activate from the project folder before starting Chia.")
+    print("Error: Make sure to run . ./activate from the project folder before starting Coffee.")
     quit()
 
 try:
@@ -799,7 +799,7 @@ class WebSocketServer:
 
     def _build_plotting_command_args(self, request: Any, ignoreCount: bool, index: int) -> List[str]:
         plotter: str = request.get("plotter", "chiapos")
-        command_args: List[str] = ["chia", "plotters", plotter]
+        command_args: List[str] = ["coffee", "plotters", plotter]
 
         command_args.extend(self._common_plotting_command_args(request, ignoreCount))
 
@@ -1158,8 +1158,8 @@ def plotter_log_path(root_path: Path, id: str):
 
 
 def launch_plotter(root_path: Path, service_name: str, service_array: List[str], id: str):
-    # we need to pass on the possibly altered CHIA_ROOT
-    os.environ["CHIA_ROOT"] = str(root_path)
+    # we need to pass on the possibly altered COFFEE_ROOT
+    os.environ["COFFEE_ROOT"] = str(root_path)
     service_executable = executable_for_service(service_array[0])
 
     # Swap service name with name of executable
@@ -1208,21 +1208,21 @@ def launch_service(root_path: Path, service_command) -> Tuple[subprocess.Popen, 
     """
     Launch a child process.
     """
-    # set up CHIA_ROOT
+    # set up COFFEE_ROOT
     # invoke correct script
     # save away PID
 
-    # we need to pass on the possibly altered CHIA_ROOT
-    os.environ["CHIA_ROOT"] = str(root_path)
+    # we need to pass on the possibly altered COFFEE_ROOT
+    os.environ["COFFEE_ROOT"] = str(root_path)
 
-    log.debug(f"Launching service with CHIA_ROOT: {os.environ['CHIA_ROOT']}")
+    log.debug(f"Launching service with COFFEE_ROOT: {os.environ['COFFEE_ROOT']}")
 
     # Insert proper e
     service_array = service_command.split()
     service_executable = executable_for_service(service_array[0])
     service_array[0] = service_executable
 
-    if service_command == "chia_full_node_simulator":
+    if service_command == "coffee_full_node_simulator":
         # Set the -D/--connect_to_daemon flag to signify that the child should connect
         # to the daemon to access the keychain
         service_array.append("-D")
@@ -1390,9 +1390,9 @@ def singleton(lockfile: Path, text: str = "semaphore") -> Optional[TextIO]:
 
 
 async def async_run_daemon(root_path: Path, wait_for_unlock: bool = False) -> int:
-    # When wait_for_unlock is true, we want to skip the check_keys() call in chia_init
+    # When wait_for_unlock is true, we want to skip the check_keys() call in coffee_init
     # since it might be necessary to wait for the GUI to unlock the keyring first.
-    chia_init(root_path, should_check_keys=(not wait_for_unlock))
+    coffee_init(root_path, should_check_keys=(not wait_for_unlock))
     config = load_config(root_path, "config.yaml")
     setproctitle("coffee_daemon")
     initialize_logging("daemon", config["logging"], root_path)
@@ -1436,8 +1436,8 @@ def run_daemon(root_path: Path, wait_for_unlock: bool = False) -> int:
 
 
 def main(argv) -> int:
-    from chia.util.default_root import DEFAULT_ROOT_PATH
-    from chia.util.keychain import Keychain
+    from coffee.util.default_root import DEFAULT_ROOT_PATH
+    from coffee.util.keychain import Keychain
 
     wait_for_unlock = "--wait-for-unlock" in argv and Keychain.is_keyring_locked()
     return run_daemon(DEFAULT_ROOT_PATH, wait_for_unlock)

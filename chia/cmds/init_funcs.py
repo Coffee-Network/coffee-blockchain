@@ -5,27 +5,27 @@ from typing import Any, Dict, List, Optional, Tuple
 
 import yaml
 
-from chia import __version__
-from chia.consensus.coinbase import create_puzzlehash_for_pk
-from chia.ssl.create_ssl import (
+from coffee import __version__
+from coffee.consensus.coinbase import create_puzzlehash_for_pk
+from coffee.ssl.create_ssl import (
     ensure_ssl_dirs,
     generate_ca_signed_cert,
-    get_chia_ca_crt_key,
+    get_coffee_ca_crt_key,
     make_ca_cert,
     write_ssl_cert_and_key,
 )
-from chia.util.bech32m import encode_puzzle_hash
-from chia.util.config import (
-    create_default_chia_config,
+from coffee.util.bech32m import encode_puzzle_hash
+from coffee.util.config import (
+    create_default_coffee_config,
     initial_config_file,
     load_config,
     save_config,
     unflatten_properties,
 )
-from chia.util.ints import uint32
-from chia.util.keychain import Keychain
-from chia.util.path import mkdir
-from chia.util.ssl_check import (
+from coffee.util.ints import uint32
+from coffee.util.keychain import Keychain
+from coffee.util.path import mkdir
+from coffee.util.ssl_check import (
     DEFAULT_PERMISSIONS_CERT_FILE,
     DEFAULT_PERMISSIONS_KEY_FILE,
     RESTRICT_MASK_CERT_FILE,
@@ -33,8 +33,8 @@ from chia.util.ssl_check import (
     check_and_fix_permissions_for_ssl_file,
     fix_ssl,
 )
-from chia.wallet.derive_keys import master_sk_to_pool_sk, master_sk_to_wallet_sk
-from chia.cmds.configure import configure
+from coffee.wallet.derive_keys import master_sk_to_pool_sk, master_sk_to_wallet_sk
+from coffee.cmds.configure import configure
 
 private_node_names = {"full_node", "wallet", "farmer", "harvester", "timelord", "daemon"}
 public_node_names = {"full_node", "wallet", "farmer", "introducer", "timelord"}
@@ -199,10 +199,10 @@ def create_all_ssl(root_path: Path):
 
     private_ca_key_path = ca_dir / "private_ca.key"
     private_ca_crt_path = ca_dir / "private_ca.crt"
-    chia_ca_crt, chia_ca_key = get_chia_ca_crt_key()
-    chia_ca_crt_path = ca_dir / "chia_ca.crt"
-    chia_ca_key_path = ca_dir / "chia_ca.key"
-    write_ssl_cert_and_key(chia_ca_crt_path, chia_ca_crt, chia_ca_key_path, chia_ca_key)
+    coffee_ca_crt, coffee_ca_key = get_coffee_ca_crt_key()
+    coffee_ca_crt_path = ca_dir / "coffee_ca.crt"
+    coffee_ca_key_path = ca_dir / "coffee_ca.key"
+    write_ssl_cert_and_key(coffee_ca_crt_path, coffee_ca_crt, coffee_ca_key_path, coffee_ca_key)
 
     if not private_ca_key_path.exists() or not private_ca_crt_path.exists():
         # Create private CA
@@ -219,8 +219,8 @@ def create_all_ssl(root_path: Path):
         ca_crt = private_ca_crt_path.read_bytes()
         generate_ssl_for_nodes(ssl_dir, ca_crt, ca_key, True)
 
-    chia_ca_crt, chia_ca_key = get_chia_ca_crt_key()
-    generate_ssl_for_nodes(ssl_dir, chia_ca_crt, chia_ca_key, False, overwrite=False)
+    coffee_ca_crt, coffee_ca_key = get_coffee_ca_crt_key()
+    generate_ssl_for_nodes(ssl_dir, coffee_ca_crt, coffee_ca_key, False, overwrite=False)
 
 
 def generate_ssl_for_nodes(ssl_dir: Path, ca_crt: bytes, ca_key: bytes, private: bool, overwrite=True):
@@ -272,7 +272,7 @@ def init(create_certs: Optional[Path], root_path: Path, fix_ssl_permissions: boo
             print(f"** {root_path} does not exist. Executing core init **")
             # sanity check here to prevent infinite recursion
             if (
-                chia_init(root_path, fix_ssl_permissions=fix_ssl_permissions, testnet=testnet) == 0
+                coffee_init(root_path, fix_ssl_permissions=fix_ssl_permissions, testnet=testnet) == 0
                 and root_path.exists()
             ):
                 return init(create_certs, root_path, fix_ssl_permissions)
@@ -280,10 +280,10 @@ def init(create_certs: Optional[Path], root_path: Path, fix_ssl_permissions: boo
             print(f"** {root_path} was not created. Exiting **")
             return -1
     else:
-        return chia_init(root_path, fix_ssl_permissions=fix_ssl_permissions, testnet=testnet)
+        return coffee_init(root_path, fix_ssl_permissions=fix_ssl_permissions, testnet=testnet)
 
 
-def chia_version_number() -> Tuple[str, str, str, str]:
+def coffee_version_number() -> Tuple[str, str, str, str]:
     scm_full_version = __version__
     left_full_version = scm_full_version.split("+")
 
@@ -331,18 +331,18 @@ def chia_version_number() -> Tuple[str, str, str, str]:
     return major_release_number, minor_release_number, patch_release_number, dev_release_number
 
 
-def chia_minor_release_number():
-    res = int(chia_version_number()[2])
+def coffee_minor_release_number():
+    res = int(coffee_version_number()[2])
     print(f"Install release number: {res}")
     return res
 
 
-def chia_full_version_str() -> str:
-    major, minor, patch, dev = chia_version_number()
+def coffee_full_version_str() -> str:
+    major, minor, patch, dev = coffee_version_number()
     return f"{major}.{minor}.{patch}{dev}"
 
 
-def chia_init(
+def coffee_init(
     root_path: Path, *, should_check_keys: bool = True, fix_ssl_permissions: bool = False, testnet: bool = False
 ):
     """
@@ -353,16 +353,16 @@ def chia_init(
     protected Keychain. When launching the daemon from the GUI, we want the GUI to
     handle unlocking the keychain.
     """
-    if os.environ.get("CHIA_ROOT", None) is not None:
+    if os.environ.get("COFFEE_ROOT", None) is not None:
         print(
-            f"warning, your CHIA_ROOT is set to {os.environ['CHIA_ROOT']}. "
+            f"warning, your COFFEE_ROOT is set to {os.environ['COFFEE_ROOT']}. "
             f"Please unset the environment variable and run coffee init again\n"
             f"or manually migrate config.yaml"
         )
 
     print(f"Silicoin directory {root_path}")
     if root_path.is_dir() and Path(root_path / "config" / "config.yaml").exists():
-        # This is reached if CHIA_ROOT is set, or if user has run coffee init twice
+        # This is reached if COFFEE_ROOT is set, or if user has run coffee init twice
         # before a new update.
         if testnet:
             configure(root_path, "", "", "", "", "", "", "", "", testnet="true", peer_connect_timeout="")
@@ -373,7 +373,7 @@ def chia_init(
         print(f"{root_path} already exists, no migration action taken")
         return -1
 
-    create_default_chia_config(root_path)
+    create_default_coffee_config(root_path)
     if testnet:
         configure(root_path, "", "", "", "", "", "", "", "", testnet="true", peer_connect_timeout="")
     create_all_ssl(root_path)

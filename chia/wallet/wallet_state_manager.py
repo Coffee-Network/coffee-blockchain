@@ -12,56 +12,56 @@ from blspy import AugSchemeMPL, G1Element, PrivateKey
 from chiabip158 import PyBIP158
 from cryptography.fernet import Fernet
 
-from chia import __version__
-from chia.consensus.block_record import BlockRecord
-from chia.consensus.coinbase import create_puzzlehash_for_pk, farmer_parent_id, pool_parent_id
-from chia.consensus.constants import ConsensusConstants
-from chia.consensus.find_fork_point import find_fork_point_in_chain
-from chia.full_node.weight_proof import WeightProofHandler
-from chia.pools.pool_puzzles import SINGLETON_LAUNCHER_HASH, solution_to_pool_state
-from chia.pools.pool_wallet import PoolWallet
-from chia.protocols.wallet_protocol import PuzzleSolutionResponse, RespondPuzzleSolution
-from chia.server.server import ChiaServer
-from chia.types.blockchain_format.coin import Coin
-from chia.types.blockchain_format.program import Program
-from chia.types.blockchain_format.sized_bytes import bytes32
-from chia.types.coin_spend import CoinSpend
-from chia.types.full_block import FullBlock
-from chia.types.header_block import HeaderBlock
-from chia.types.mempool_inclusion_status import MempoolInclusionStatus
-from chia.util.byte_types import hexstr_to_bytes
-from chia.util.db_wrapper import DBWrapper
-from chia.util.errors import Err
-from chia.util.hash import std_hash
-from chia.util.ints import uint32, uint64, uint128
-from chia.util.db_synchronous import db_synchronous_on
-from chia.wallet.block_record import HeaderBlockRecord
-from chia.wallet.cc_wallet.cc_wallet import CCWallet
-from chia.wallet.derivation_record import DerivationRecord
-from chia.wallet.derive_keys import master_sk_to_backup_sk, master_sk_to_farmer_sk, master_sk_to_wallet_sk
-from chia.wallet.did_wallet.did_wallet import DIDWallet
-from chia.wallet.key_val_store import KeyValStore
-from chia.wallet.rl_wallet.rl_wallet import RLWallet
-from chia.wallet.settings.user_settings import UserSettings
-from chia.wallet.trade_manager import TradeManager
-from chia.wallet.transaction_record import TransactionRecord
-from chia.wallet.util.backup_utils import open_backup_file
-from chia.wallet.util.transaction_type import TransactionType
-from chia.wallet.util.wallet_types import WalletType
-from chia.wallet.wallet import Wallet
-from chia.wallet.wallet_action import WalletAction
-from chia.wallet.wallet_action_store import WalletActionStore
-from chia.wallet.wallet_block_store import WalletBlockStore
-from chia.wallet.wallet_blockchain import WalletBlockchain
-from chia.wallet.wallet_coin_record import WalletCoinRecord
-from chia.wallet.wallet_coin_store import WalletCoinStore
-from chia.wallet.wallet_info import WalletInfo, WalletInfoBackup
-from chia.wallet.wallet_interested_store import WalletInterestedStore
-from chia.wallet.wallet_pool_store import WalletPoolStore
-from chia.wallet.wallet_puzzle_store import WalletPuzzleStore
-from chia.wallet.wallet_sync_store import WalletSyncStore
-from chia.wallet.wallet_transaction_store import WalletTransactionStore
-from chia.wallet.wallet_user_store import WalletUserStore
+from coffee import __version__
+from coffee.consensus.block_record import BlockRecord
+from coffee.consensus.coinbase import create_puzzlehash_for_pk, farmer_parent_id, pool_parent_id
+from coffee.consensus.constants import ConsensusConstants
+from coffee.consensus.find_fork_point import find_fork_point_in_chain
+from coffee.full_node.weight_proof import WeightProofHandler
+from coffee.pools.pool_puzzles import SINGLETON_LAUNCHER_HASH, solution_to_pool_state
+from coffee.pools.pool_wallet import PoolWallet
+from coffee.protocols.wallet_protocol import PuzzleSolutionResponse, RespondPuzzleSolution
+from coffee.server.server import CoffeeServer
+from coffee.types.blockchain_format.coin import Coin
+from coffee.types.blockchain_format.program import Program
+from coffee.types.blockchain_format.sized_bytes import bytes32
+from coffee.types.coin_spend import CoinSpend
+from coffee.types.full_block import FullBlock
+from coffee.types.header_block import HeaderBlock
+from coffee.types.mempool_inclusion_status import MempoolInclusionStatus
+from coffee.util.byte_types import hexstr_to_bytes
+from coffee.util.db_wrapper import DBWrapper
+from coffee.util.errors import Err
+from coffee.util.hash import std_hash
+from coffee.util.ints import uint32, uint64, uint128
+from coffee.util.db_synchronous import db_synchronous_on
+from coffee.wallet.block_record import HeaderBlockRecord
+from coffee.wallet.cc_wallet.cc_wallet import CCWallet
+from coffee.wallet.derivation_record import DerivationRecord
+from coffee.wallet.derive_keys import master_sk_to_backup_sk, master_sk_to_farmer_sk, master_sk_to_wallet_sk
+from coffee.wallet.did_wallet.did_wallet import DIDWallet
+from coffee.wallet.key_val_store import KeyValStore
+from coffee.wallet.rl_wallet.rl_wallet import RLWallet
+from coffee.wallet.settings.user_settings import UserSettings
+from coffee.wallet.trade_manager import TradeManager
+from coffee.wallet.transaction_record import TransactionRecord
+from coffee.wallet.util.backup_utils import open_backup_file
+from coffee.wallet.util.transaction_type import TransactionType
+from coffee.wallet.util.wallet_types import WalletType
+from coffee.wallet.wallet import Wallet
+from coffee.wallet.wallet_action import WalletAction
+from coffee.wallet.wallet_action_store import WalletActionStore
+from coffee.wallet.wallet_block_store import WalletBlockStore
+from coffee.wallet.wallet_blockchain import WalletBlockchain
+from coffee.wallet.wallet_coin_record import WalletCoinRecord
+from coffee.wallet.wallet_coin_store import WalletCoinStore
+from coffee.wallet.wallet_info import WalletInfo, WalletInfoBackup
+from coffee.wallet.wallet_interested_store import WalletInterestedStore
+from coffee.wallet.wallet_pool_store import WalletPoolStore
+from coffee.wallet.wallet_puzzle_store import WalletPuzzleStore
+from coffee.wallet.wallet_sync_store import WalletSyncStore
+from coffee.wallet.wallet_transaction_store import WalletTransactionStore
+from coffee.wallet.wallet_user_store import WalletUserStore
 
 
 def get_balance_from_coin_records(coin_records: Set[WalletCoinRecord]) -> uint128:
@@ -115,7 +115,7 @@ class WalletStateManager:
     interested_store: WalletInterestedStore
     pool_store: WalletPoolStore
     weight_proof_handler: Any
-    server: ChiaServer
+    server: CoffeeServer
     root_path: Path
 
     @staticmethod
@@ -124,7 +124,7 @@ class WalletStateManager:
         config: Dict,
         db_path: Path,
         constants: ConsensusConstants,
-        server: ChiaServer,
+        server: CoffeeServer,
         root_path: Path,
         name: str = None,
     ):

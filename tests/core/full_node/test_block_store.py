@@ -7,11 +7,11 @@ from pathlib import Path
 import aiosqlite
 import pytest
 
-from chia.consensus.blockchain import Blockchain
-from chia.full_node.block_store import BlockStore
-from chia.full_node.coin_store import CoinStore
-from chia.full_node.hint_store import HintStore
-from chia.util.db_wrapper import DBWrapper
+from coffee.consensus.blockchain import Blockchain
+from coffee.full_node.block_store import BlockStore
+from coffee.full_node.coin_store import CoinStore
+from coffee.full_node.hint_store import HintStore
+from coffee.util.db_wrapper import DBWrapper
 from tests.setup_nodes import bt, test_constants
 
 log = logging.getLogger(__name__)

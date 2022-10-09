@@ -4,7 +4,7 @@ from typing import Any, Iterable, Union
 
 import nest_asyncio
 
-from chia.server.outbound_message import NodeType
+from coffee.server.outbound_message import NodeType
 
 
 def is_in_network(peer_host: str, networks: Iterable[Union[IPv4Network, IPv6Network]]) -> bool:
@@ -21,27 +21,27 @@ def is_localhost(peer_host: str) -> bool:
 
 def class_for_type(type: NodeType) -> Any:
     if type is NodeType.FULL_NODE:
-        from chia.full_node.full_node_api import FullNodeAPI
+        from coffee.full_node.full_node_api import FullNodeAPI
 
         return FullNodeAPI
     elif type is NodeType.WALLET:
-        from chia.wallet.wallet_node_api import WalletNodeAPI
+        from coffee.wallet.wallet_node_api import WalletNodeAPI
 
         return WalletNodeAPI
     elif type is NodeType.INTRODUCER:
-        from chia.introducer.introducer_api import IntroducerAPI
+        from coffee.introducer.introducer_api import IntroducerAPI
 
         return IntroducerAPI
     elif type is NodeType.TIMELORD:
-        from chia.timelord.timelord_api import TimelordAPI
+        from coffee.timelord.timelord_api import TimelordAPI
 
         return TimelordAPI
     elif type is NodeType.FARMER:
-        from chia.farmer.farmer_api import FarmerAPI
+        from coffee.farmer.farmer_api import FarmerAPI
 
         return FarmerAPI
     elif type is NodeType.HARVESTER:
-        from chia.harvester.harvester_api import HarvesterAPI
+        from coffee.harvester.harvester_api import HarvesterAPI
 
         return HarvesterAPI
     raise ValueError("No class for type")

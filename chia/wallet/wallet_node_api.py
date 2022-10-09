@@ -1,10 +1,10 @@
-from chia.protocols import farmer_protocol, full_node_protocol, introducer_protocol, wallet_protocol
-from chia.server.outbound_message import NodeType
-from chia.server.ws_connection import WSChiaConnection
-from chia.types.mempool_inclusion_status import MempoolInclusionStatus
-from chia.util.api_decorators import api_request, execute_task, peer_required
-from chia.util.errors import Err
-from chia.wallet.wallet_node import WalletNode
+from coffee.protocols import farmer_protocol, full_node_protocol, introducer_protocol, wallet_protocol
+from coffee.server.outbound_message import NodeType
+from coffee.server.ws_connection import WSCoffeeConnection
+from coffee.types.mempool_inclusion_status import MempoolInclusionStatus
+from coffee.util.api_decorators import api_request, execute_task, peer_required
+from coffee.util.errors import Err
+from coffee.wallet.wallet_node import WalletNode
 
 
 class WalletNodeAPI:
@@ -23,10 +23,10 @@ class WalletNodeAPI:
 
     @peer_required
     @api_request
-    async def respond_removals(self, response: wallet_protocol.RespondRemovals, peer: WSChiaConnection):
+    async def respond_removals(self, response: wallet_protocol.RespondRemovals, peer: WSCoffeeConnection):
         pass
 
-    async def reject_removals_request(self, response: wallet_protocol.RejectRemovalsRequest, peer: WSChiaConnection):
+    async def reject_removals_request(self, response: wallet_protocol.RejectRemovalsRequest, peer: WSCoffeeConnection):
         """
         The full node has rejected our request for removals.
         """
@@ -42,7 +42,7 @@ class WalletNodeAPI:
     @execute_task
     @peer_required
     @api_request
-    async def new_peak_wallet(self, peak: wallet_protocol.NewPeakWallet, peer: WSChiaConnection):
+    async def new_peak_wallet(self, peak: wallet_protocol.NewPeakWallet, peer: WSCoffeeConnection):
         """
         The full node sent as a new peak
         """
@@ -61,7 +61,7 @@ class WalletNodeAPI:
 
     @peer_required
     @api_request
-    async def respond_additions(self, response: wallet_protocol.RespondAdditions, peer: WSChiaConnection):
+    async def respond_additions(self, response: wallet_protocol.RespondAdditions, peer: WSCoffeeConnection):
         pass
 
     @api_request
@@ -70,7 +70,7 @@ class WalletNodeAPI:
 
     @peer_required
     @api_request
-    async def transaction_ack(self, ack: wallet_protocol.TransactionAck, peer: WSChiaConnection):
+    async def transaction_ack(self, ack: wallet_protocol.TransactionAck, peer: WSCoffeeConnection):
         """
         This is an ack for our previous SendTransaction call. This removes the transaction from
         the send queue if we have sent it to enough nodes.
@@ -94,7 +94,7 @@ class WalletNodeAPI:
     @peer_required
     @api_request
     async def respond_peers_introducer(
-        self, request: introducer_protocol.RespondPeersIntroducer, peer: WSChiaConnection
+        self, request: introducer_protocol.RespondPeersIntroducer, peer: WSCoffeeConnection
     ):
         if not self.wallet_node.has_full_node():
             await self.wallet_node.wallet_peers.respond_peers(request, peer.get_peer_info(), False)
@@ -106,7 +106,7 @@ class WalletNodeAPI:
 
     @peer_required
     @api_request
-    async def respond_peers(self, request: full_node_protocol.RespondPeers, peer: WSChiaConnection):
+    async def respond_peers(self, request: full_node_protocol.RespondPeers, peer: WSCoffeeConnection):
         if not self.wallet_node.has_full_node():
             self.log.info(f"Wallet received {len(request.peer_list)} peers.")
             await self.wallet_node.wallet_peers.respond_peers(request, peer.get_peer_info(), True)

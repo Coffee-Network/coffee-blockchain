@@ -3,48 +3,48 @@ from unittest import TestCase
 
 from clvm_tools.clvmc import compile_clvm
 
-from chia.types.blockchain_format.program import Program, SerializedProgram
+from coffee.types.blockchain_format.program import Program, SerializedProgram
 
 wallet_program_files = set(
     [
-        "chia/wallet/puzzles/calculate_synthetic_public_key.clvm",
-        "chia/wallet/puzzles/cc.clvm",
-        "chia/wallet/puzzles/chialisp_deserialisation.clvm",
-        "chia/wallet/puzzles/rom_bootstrap_generator.clvm",
-        "chia/wallet/puzzles/generator_for_single_coin.clvm",
-        "chia/wallet/puzzles/genesis-by-coin-id-with-0.clvm",
-        "chia/wallet/puzzles/genesis-by-puzzle-hash-with-0.clvm",
-        "chia/wallet/puzzles/lock.inner.puzzle.clvm",
-        "chia/wallet/puzzles/p2_conditions.clvm",
-        "chia/wallet/puzzles/p2_delegated_conditions.clvm",
-        "chia/wallet/puzzles/p2_delegated_puzzle.clvm",
-        "chia/wallet/puzzles/p2_delegated_puzzle_or_hidden_puzzle.clvm",
-        "chia/wallet/puzzles/p2_m_of_n_delegate_direct.clvm",
-        "chia/wallet/puzzles/p2_puzzle_hash.clvm",
-        "chia/wallet/puzzles/rl_aggregation.clvm",
-        "chia/wallet/puzzles/rl.clvm",
-        "chia/wallet/puzzles/sha256tree_module.clvm",
-        "chia/wallet/puzzles/singleton_top_layer.clvm",
-        "chia/wallet/puzzles/did_innerpuz.clvm",
-        "chia/wallet/puzzles/decompress_puzzle.clvm",
-        "chia/wallet/puzzles/decompress_coin_spend_entry_with_prefix.clvm",
-        "chia/wallet/puzzles/decompress_coin_spend_entry.clvm",
-        "chia/wallet/puzzles/block_program_zero.clvm",
-        "chia/wallet/puzzles/test_generator_deserialize.clvm",
-        "chia/wallet/puzzles/test_multiple_generator_input_arguments.clvm",
-        "chia/wallet/puzzles/p2_singleton.clvm",
-        "chia/wallet/puzzles/pool_waitingroom_innerpuz.clvm",
-        "chia/wallet/puzzles/pool_member_innerpuz.clvm",
-        "chia/wallet/puzzles/singleton_launcher.clvm",
-        "chia/wallet/puzzles/p2_singleton_or_delayed_puzhash.clvm",
+        "coffee/wallet/puzzles/calculate_synthetic_public_key.clvm",
+        "coffee/wallet/puzzles/cc.clvm",
+        "coffee/wallet/puzzles/chialisp_deserialisation.clvm",
+        "coffee/wallet/puzzles/rom_bootstrap_generator.clvm",
+        "coffee/wallet/puzzles/generator_for_single_coin.clvm",
+        "coffee/wallet/puzzles/genesis-by-coin-id-with-0.clvm",
+        "coffee/wallet/puzzles/genesis-by-puzzle-hash-with-0.clvm",
+        "coffee/wallet/puzzles/lock.inner.puzzle.clvm",
+        "coffee/wallet/puzzles/p2_conditions.clvm",
+        "coffee/wallet/puzzles/p2_delegated_conditions.clvm",
+        "coffee/wallet/puzzles/p2_delegated_puzzle.clvm",
+        "coffee/wallet/puzzles/p2_delegated_puzzle_or_hidden_puzzle.clvm",
+        "coffee/wallet/puzzles/p2_m_of_n_delegate_direct.clvm",
+        "coffee/wallet/puzzles/p2_puzzle_hash.clvm",
+        "coffee/wallet/puzzles/rl_aggregation.clvm",
+        "coffee/wallet/puzzles/rl.clvm",
+        "coffee/wallet/puzzles/sha256tree_module.clvm",
+        "coffee/wallet/puzzles/singleton_top_layer.clvm",
+        "coffee/wallet/puzzles/did_innerpuz.clvm",
+        "coffee/wallet/puzzles/decompress_puzzle.clvm",
+        "coffee/wallet/puzzles/decompress_coin_spend_entry_with_prefix.clvm",
+        "coffee/wallet/puzzles/decompress_coin_spend_entry.clvm",
+        "coffee/wallet/puzzles/block_program_zero.clvm",
+        "coffee/wallet/puzzles/test_generator_deserialize.clvm",
+        "coffee/wallet/puzzles/test_multiple_generator_input_arguments.clvm",
+        "coffee/wallet/puzzles/p2_singleton.clvm",
+        "coffee/wallet/puzzles/pool_waitingroom_innerpuz.clvm",
+        "coffee/wallet/puzzles/pool_member_innerpuz.clvm",
+        "coffee/wallet/puzzles/singleton_launcher.clvm",
+        "coffee/wallet/puzzles/p2_singleton_or_delayed_puzhash.clvm",
     ]
 )
 
 clvm_include_files = set(
-    ["chia/wallet/puzzles/create-lock-puzzlehash.clvm", "chia/wallet/puzzles/condition_codes.clvm"]
+    ["coffee/wallet/puzzles/create-lock-puzzlehash.clvm", "coffee/wallet/puzzles/condition_codes.clvm"]
 )
 
-CLVM_PROGRAM_ROOT = "chia/wallet/puzzles"
+CLVM_PROGRAM_ROOT = "coffee/wallet/puzzles"
 
 
 def list_files(dir, glob):
@@ -71,7 +71,7 @@ class TestClvmCompilation(TestCase):
 
     def test_all_programs_listed(self):
         """
-        Checks to see if a new .clvm file was added to chia/wallet/puzzles, but not added to `wallet_program_files`
+        Checks to see if a new .clvm file was added to coffee/wallet/puzzles, but not added to `wallet_program_files`
         """
         existing_files = list_files(CLVM_PROGRAM_ROOT, "*.clvm")
         existing_file_paths = set([Path(x).relative_to(CLVM_PROGRAM_ROOT) for x in existing_files])

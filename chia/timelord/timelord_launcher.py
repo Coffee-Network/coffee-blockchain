@@ -8,12 +8,12 @@ from typing import Dict, List
 
 import pkg_resources
 
-from chia.types.peer_info import PeerInfo
-from chia.util.chia_logging import initialize_logging
-from chia.util.config import load_config
-from chia.util.default_root import DEFAULT_ROOT_PATH
-from chia.util.ints import uint16
-from chia.util.setproctitle import setproctitle
+from coffee.types.peer_info import PeerInfo
+from coffee.util.coffee_logging import initialize_logging
+from coffee.util.config import load_config
+from coffee.util.default_root import DEFAULT_ROOT_PATH
+from coffee.util.ints import uint16
+from coffee.util.setproctitle import setproctitle
 
 active_processes: List = []
 stopped = False

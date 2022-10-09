@@ -1,11 +1,11 @@
 from dataclasses import dataclass
 from typing import Optional
 
-from chia.protocols.wallet_protocol import CoinState
-from chia.types.blockchain_format.coin import Coin
-from chia.types.blockchain_format.sized_bytes import bytes32
-from chia.util.ints import uint32, uint64
-from chia.util.streamable import Streamable, streamable
+from coffee.protocols.wallet_protocol import CoinState
+from coffee.types.blockchain_format.coin import Coin
+from coffee.types.blockchain_format.sized_bytes import bytes32
+from coffee.util.ints import uint32, uint64
+from coffee.util.streamable import Streamable, streamable
 
 
 @dataclass(frozen=True)

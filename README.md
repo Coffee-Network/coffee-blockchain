@@ -8,7 +8,7 @@ Coffee(XCF) is a modern cryptocurrency built from scratch, designed to be effici
 * Simplified UTXO based transaction model, with small on-chain state
 * Lisp-style Turing-complete functional [programming language](https://chialisp.com/) for money related use cases
 * BLS keys and aggregate signatures (only one signature per block)
-* [Pooling protocol](https://github.com/Chia-Network/chia-blockchain/wiki/Pooling-User-Guide) that allows farmers to have control of making blocks
+* [Pooling protocol](https://github.com/Chia-Network/coffee-blockchain/wiki/Pooling-User-Guide) that allows farmers to have control of making blocks
 * Support for light clients with fast, objective syncing
 * A growing community of farmers and developers around the world
 * Combining Proof-of-Work and Proof-of-Stake Securely
@@ -20,11 +20,11 @@ Please visit our wiki for more information:
 
 ## Resource Links
 
-[ChiaHub](https://www.chia-hub.com/)
+[CoffeeHub](https://www.coffee-hub.com/)
 
-[Chia Forks Calculator](https://chiaforkscalculator.com/)
+[Coffee Forks Calculator](https://coffeeforkscalculator.com/)
 
-[Chiaforks Blockchain](https://chiaforksblockchain.com/)
+[Coffeeforks Blockchain](https://coffeeforksblockchain.com/)
 
 [TokenDock](https://tokendock.io/)
 

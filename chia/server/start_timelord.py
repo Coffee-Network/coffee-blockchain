@@ -2,15 +2,15 @@ import logging
 import pathlib
 from typing import Dict
 
-from chia.consensus.constants import ConsensusConstants
-from chia.consensus.default_constants import DEFAULT_CONSTANTS
-from chia.server.outbound_message import NodeType
-from chia.server.start_service import run_service
-from chia.timelord.timelord import Timelord
-from chia.timelord.timelord_api import TimelordAPI
-from chia.types.peer_info import PeerInfo
-from chia.util.config import load_config_cli
-from chia.util.default_root import DEFAULT_ROOT_PATH
+from coffee.consensus.constants import ConsensusConstants
+from coffee.consensus.default_constants import DEFAULT_CONSTANTS
+from coffee.server.outbound_message import NodeType
+from coffee.server.start_service import run_service
+from coffee.timelord.timelord import Timelord
+from coffee.timelord.timelord_api import TimelordAPI
+from coffee.types.peer_info import PeerInfo
+from coffee.util.config import load_config_cli
+from coffee.util.default_root import DEFAULT_ROOT_PATH
 
 # See: https://bugs.python.org/issue29288
 "".encode("idna")

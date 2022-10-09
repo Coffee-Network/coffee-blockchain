@@ -16,17 +16,17 @@ else
 fi
 
 pip install setuptools_scm
-# The environment variable CHIA_INSTALLER_VERSION needs to be defined
+# The environment variable COFFEE_INSTALLER_VERSION needs to be defined
 # If the env variable NOTARIZE and the username and password variables are
 # set, this will attempt to Notarize the signed DMG
-CHIA_INSTALLER_VERSION=$(python installer-version.py)
+COFFEE_INSTALLER_VERSION=$(python installer-version.py)
 
-if [ ! "$CHIA_INSTALLER_VERSION" ]; then
-	echo "WARNING: No environment variable CHIA_INSTALLER_VERSION set. Using 0.0.0."
-	CHIA_INSTALLER_VERSION="0.0.0"
+if [ ! "$COFFEE_INSTALLER_VERSION" ]; then
+	echo "WARNING: No environment variable COFFEE_INSTALLER_VERSION set. Using 0.0.0."
+	COFFEE_INSTALLER_VERSION="0.0.0"
 fi
-echo "Chia Installer Version is: $CHIA_INSTALLER_VERSION"
-RPM_NAME="$APP_NAME-$CHIA_INSTALLER_VERSION"
+echo "Coffee Installer Version is: $COFFEE_INSTALLER_VERSION"
+RPM_NAME="$APP_NAME-$COFFEE_INSTALLER_VERSION"
 
 echo "Installing npm and electron packagers"
 npm install electron-packager -g
@@ -38,7 +38,7 @@ mkdir dist
 
 echo "Create executables with pyinstaller"
 pip install pyinstaller==4.5
-SPEC_FILE=$(python -c 'import chia; print(chia.PYINSTALLER_SPEC_PATH)')
+SPEC_FILE=$(python -c 'import coffee; print(coffee.PYINSTALLER_SPEC_PATH)')
 pyinstaller --log-level=INFO "$SPEC_FILE"
 LAST_EXIT_CODE=$?
 if [ "$LAST_EXIT_CODE" -ne 0 ]; then
@@ -60,13 +60,13 @@ if [ "$LAST_EXIT_CODE" -ne 0 ]; then
 	exit $LAST_EXIT_CODE
 fi
 
-# sets the version for chia-blockchain in package.json
+# sets the version for coffee-blockchain in package.json
 cp package.json package.json.orig
-jq --arg VER "$CHIA_INSTALLER_VERSION" '.version=$VER' package.json > temp.json && mv temp.json package.json
+jq --arg VER "$COFFEE_INSTALLER_VERSION" '.version=$VER' package.json > temp.json && mv temp.json package.json
 
 electron-packager . $APP_NAME --asar.unpack="**/daemon/**" --platform=linux \
 --icon=src/assets/img/coffee.icns --overwrite --app-bundle-id=$APP_BUNDLEID \
---appVersion=$CHIA_INSTALLER_VERSION
+--appVersion=$COFFEE_INSTALLER_VERSION
 LAST_EXIT_CODE=$?
 
 # reset the package.json to the original
@@ -86,7 +86,7 @@ if [ "$REDHAT_PLATFORM" = "x86_64" ]; then
 	# shellcheck disable=SC2046
 	NODE_ROOT="$(dirname $(dirname $(which node)))"
 
-	# Disables build links from the generated rpm so that we dont conflict with other packages. See https://github.com/Chia-Network/chia-blockchain/issues/3846
+	# Disables build links from the generated rpm so that we dont conflict with other packages. See https://github.com/Chia-Network/coffee-blockchain/issues/3846
 	# shellcheck disable=SC2086
 	sed -i '1s/^/%define _build_id_links none\n%global _enable_debug_package 0\n%global debug_package %{nil}\n%global __os_install_post \/usr\/lib\/rpm\/brp-compress %{nil}\n/' "$NODE_ROOT/lib/node_modules/electron-installer-redhat/resources/spec.ejs"
 
@@ -96,7 +96,7 @@ if [ "$REDHAT_PLATFORM" = "x86_64" ]; then
 	sed -i "s#throw new Error('Please upgrade to RPM 4.13.*#console.warn('You are using RPM < 4.13')\n      return { requires: [ 'gtk3', 'libnotify', 'nss', 'libXScrnSaver', 'libXtst', 'xdg-utils', 'at-spi2-core', 'libdrm', 'mesa-libgbm', 'libxcb' ] }#g" $NODE_ROOT/lib/node_modules/electron-installer-redhat/src/dependencies.js
 
 electron-installer-redhat --src dist/$DIR_NAME/ --dest final_installer/ \
---arch "$REDHAT_PLATFORM" --options.version $CHIA_INSTALLER_VERSION \
+--arch "$REDHAT_PLATFORM" --options.version $COFFEE_INSTALLER_VERSION \
   --license ../LICENSE
   LAST_EXIT_CODE=$?
   if [ "$LAST_EXIT_CODE" -ne 0 ]; then

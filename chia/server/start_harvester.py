@@ -1,16 +1,16 @@
 import pathlib
 from typing import Dict
 
-from chia.consensus.constants import ConsensusConstants
-from chia.consensus.default_constants import DEFAULT_CONSTANTS
-from chia.harvester.harvester import Harvester
-from chia.harvester.harvester_api import HarvesterAPI
-from chia.rpc.harvester_rpc_api import HarvesterRpcApi
-from chia.server.outbound_message import NodeType
-from chia.server.start_service import run_service
-from chia.types.peer_info import PeerInfo
-from chia.util.config import load_config_cli
-from chia.util.default_root import DEFAULT_ROOT_PATH
+from coffee.consensus.constants import ConsensusConstants
+from coffee.consensus.default_constants import DEFAULT_CONSTANTS
+from coffee.harvester.harvester import Harvester
+from coffee.harvester.harvester_api import HarvesterAPI
+from coffee.rpc.harvester_rpc_api import HarvesterRpcApi
+from coffee.server.outbound_message import NodeType
+from coffee.server.start_service import run_service
+from coffee.types.peer_info import PeerInfo
+from coffee.util.config import load_config_cli
+from coffee.util.default_root import DEFAULT_ROOT_PATH
 
 # See: https://bugs.python.org/issue29288
 "".encode("idna")

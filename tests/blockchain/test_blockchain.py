@@ -11,36 +11,36 @@ import pytest
 from blspy import AugSchemeMPL, G2Element
 from clvm.casts import int_to_bytes
 
-from chia.consensus.block_rewards import calculate_base_farmer_reward
-from chia.consensus.blockchain import ReceiveBlockResult
-from chia.consensus.coinbase import create_farmer_coin
-from chia.consensus.pot_iterations import is_overflow_block
-from chia.full_node.bundle_tools import detect_potential_template_generator
-from chia.types.blockchain_format.classgroup import ClassgroupElement
-from chia.types.blockchain_format.coin import Coin
-from chia.types.blockchain_format.foliage import TransactionsInfo
-from chia.types.blockchain_format.program import SerializedProgram
-from chia.types.blockchain_format.sized_bytes import bytes32
-from chia.types.blockchain_format.slots import InfusedChallengeChainSubSlot
-from chia.types.blockchain_format.vdf import VDFInfo, VDFProof
-from chia.types.condition_opcodes import ConditionOpcode
-from chia.types.condition_with_args import ConditionWithArgs
-from chia.types.end_of_slot_bundle import EndOfSubSlotBundle
-from chia.types.full_block import FullBlock
-from chia.types.generator_types import BlockGenerator
-from chia.types.spend_bundle import SpendBundle
-from chia.types.unfinished_block import UnfinishedBlock
+from coffee.consensus.block_rewards import calculate_base_farmer_reward
+from coffee.consensus.blockchain import ReceiveBlockResult
+from coffee.consensus.coinbase import create_farmer_coin
+from coffee.consensus.pot_iterations import is_overflow_block
+from coffee.full_node.bundle_tools import detect_potential_template_generator
+from coffee.types.blockchain_format.classgroup import ClassgroupElement
+from coffee.types.blockchain_format.coin import Coin
+from coffee.types.blockchain_format.foliage import TransactionsInfo
+from coffee.types.blockchain_format.program import SerializedProgram
+from coffee.types.blockchain_format.sized_bytes import bytes32
+from coffee.types.blockchain_format.slots import InfusedChallengeChainSubSlot
+from coffee.types.blockchain_format.vdf import VDFInfo, VDFProof
+from coffee.types.condition_opcodes import ConditionOpcode
+from coffee.types.condition_with_args import ConditionWithArgs
+from coffee.types.end_of_slot_bundle import EndOfSubSlotBundle
+from coffee.types.full_block import FullBlock
+from coffee.types.generator_types import BlockGenerator
+from coffee.types.spend_bundle import SpendBundle
+from coffee.types.unfinished_block import UnfinishedBlock
 from tests.block_tools import create_block_tools_async, get_vdf_info_and_proof
-from chia.util.errors import Err
-from chia.util.hash import std_hash
-from chia.util.ints import uint8, uint64, uint32
-from chia.util.merkle_set import MerkleSet
-from chia.util.recursive_replace import recursive_replace
+from coffee.util.errors import Err
+from coffee.util.hash import std_hash
+from coffee.util.ints import uint8, uint64, uint32
+from coffee.util.merkle_set import MerkleSet
+from coffee.util.recursive_replace import recursive_replace
 from tests.wallet_tools import WalletTool
 from tests.setup_nodes import bt, test_constants
 from tests.util.blockchain import create_blockchain
 from tests.util.keyring import TempKeyring
-from chia.wallet.puzzles.p2_delegated_puzzle_or_hidden_puzzle import (
+from coffee.wallet.puzzles.p2_delegated_puzzle_or_hidden_puzzle import (
     DEFAULT_HIDDEN_PUZZLE_HASH,
     calculate_synthetic_secret_key,
 )

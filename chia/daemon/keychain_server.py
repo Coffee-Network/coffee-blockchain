@@ -1,8 +1,8 @@
 import logging
 
 from blspy import PrivateKey
-from chia.cmds.init_funcs import check_keys
-from chia.util.keychain import Keychain
+from coffee.cmds.init_funcs import check_keys
+from coffee.util.keychain import Keychain
 from pathlib import Path
 from typing import Any, Dict, List, Optional, cast
 

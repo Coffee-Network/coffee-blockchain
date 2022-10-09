@@ -10,9 +10,9 @@ from clvm.serialize import sexp_from_stream, sexp_to_stream
 from clvm_rs import STRICT_MODE, deserialize_and_run_program2, serialized_length, run_generator
 from clvm_tools.curry import curry, uncurry
 
-from chia.types.blockchain_format.sized_bytes import bytes32
-from chia.util.hash import std_hash
-from chia.util.byte_types import hexstr_to_bytes
+from coffee.types.blockchain_format.sized_bytes import bytes32
+from coffee.util.hash import std_hash
+from coffee.util.byte_types import hexstr_to_bytes
 
 from .tree_hash import sha256_treehash
 

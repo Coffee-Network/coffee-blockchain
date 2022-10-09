@@ -1,13 +1,13 @@
 from dataclasses import dataclass
 from typing import List, Optional
 
-from chia.types.blockchain_format.foliage import Foliage, FoliageTransactionBlock, TransactionsInfo
-from chia.types.blockchain_format.program import SerializedProgram
-from chia.types.blockchain_format.reward_chain_block import RewardChainBlockUnfinished
-from chia.types.blockchain_format.vdf import VDFProof
-from chia.types.end_of_slot_bundle import EndOfSubSlotBundle
-from chia.util.ints import uint32
-from chia.util.streamable import Streamable, streamable
+from coffee.types.blockchain_format.foliage import Foliage, FoliageTransactionBlock, TransactionsInfo
+from coffee.types.blockchain_format.program import SerializedProgram
+from coffee.types.blockchain_format.reward_chain_block import RewardChainBlockUnfinished
+from coffee.types.blockchain_format.vdf import VDFProof
+from coffee.types.end_of_slot_bundle import EndOfSubSlotBundle
+from coffee.util.ints import uint32
+from coffee.util.streamable import Streamable, streamable
 
 
 @dataclass(frozen=True)

@@ -4,13 +4,13 @@ from typing import Optional
 
 import click
 
-from chia.rpc.full_node_rpc_client import FullNodeRpcClient
-from chia.rpc.wallet_rpc_client import WalletRpcClient
-from chia.util.byte_types import hexstr_to_bytes
-from chia.util.config import load_config
-from chia.util.default_root import DEFAULT_ROOT_PATH
-from chia.util.ints import uint16
-from chia.util.bech32m import decode_puzzle_hash
+from coffee.rpc.full_node_rpc_client import FullNodeRpcClient
+from coffee.rpc.wallet_rpc_client import WalletRpcClient
+from coffee.util.byte_types import hexstr_to_bytes
+from coffee.util.config import load_config
+from coffee.util.default_root import DEFAULT_ROOT_PATH
+from coffee.util.ints import uint16
+from coffee.util.bech32m import decode_puzzle_hash
 
 
 @click.group("wallet", short_help="Manage your wallet")

@@ -10,8 +10,8 @@ from typing import Any, Callable, Dict, Iterator, List, Optional, Set, Tuple
 from blspy import G1Element
 from chiapos import DiskProver
 
-from chia.consensus.pos_quality import UI_ACTUAL_SPACE_CONSTANT_FACTOR, _expected_plot_size
-from chia.plotting.util import (
+from coffee.consensus.pos_quality import UI_ACTUAL_SPACE_CONSTANT_FACTOR, _expected_plot_size
+from coffee.plotting.util import (
     PlotInfo,
     PlotRefreshEvents,
     PlotRefreshResult,
@@ -21,12 +21,12 @@ from chia.plotting.util import (
     stream_plot_info_ph,
     stream_plot_info_pk,
 )
-from chia.types.blockchain_format.proof_of_space import ProofOfSpace
-from chia.types.blockchain_format.sized_bytes import bytes32
-from chia.util.ints import uint16
-from chia.util.path import mkdir
-from chia.util.streamable import Streamable, streamable
-from chia.wallet.derive_keys import master_sk_to_local_sk
+from coffee.types.blockchain_format.proof_of_space import ProofOfSpace
+from coffee.types.blockchain_format.sized_bytes import bytes32
+from coffee.util.ints import uint16
+from coffee.util.path import mkdir
+from coffee.util.streamable import Streamable, streamable
+from coffee.wallet.derive_keys import master_sk_to_local_sk
 
 log = logging.getLogger(__name__)
 

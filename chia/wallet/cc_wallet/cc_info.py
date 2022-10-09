@@ -1,9 +1,9 @@
 from dataclasses import dataclass
 from typing import List, Optional, Tuple
 
-from chia.types.blockchain_format.program import Program
-from chia.types.blockchain_format.sized_bytes import bytes32
-from chia.util.streamable import Streamable, streamable
+from coffee.types.blockchain_format.program import Program
+from coffee.types.blockchain_format.sized_bytes import bytes32
+from coffee.util.streamable import Streamable, streamable
 
 
 @dataclass(frozen=True)

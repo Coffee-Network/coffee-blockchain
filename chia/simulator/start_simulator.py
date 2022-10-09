@@ -3,13 +3,13 @@ from pathlib import Path
 from multiprocessing import freeze_support
 from typing import Dict
 
-from chia.full_node.full_node import FullNode
-from chia.rpc.full_node_rpc_api import FullNodeRpcApi
-from chia.server.outbound_message import NodeType
-from chia.server.start_service import run_service
-from chia.util.config import load_config_cli
-from chia.util.default_root import DEFAULT_ROOT_PATH
-from chia.util.path import mkdir, path_from_root
+from coffee.full_node.full_node import FullNode
+from coffee.rpc.full_node_rpc_api import FullNodeRpcApi
+from coffee.server.outbound_message import NodeType
+from coffee.server.start_service import run_service
+from coffee.util.config import load_config_cli
+from coffee.util.default_root import DEFAULT_ROOT_PATH
+from coffee.util.path import mkdir, path_from_root
 from tests.block_tools import BlockTools, create_block_tools, test_constants
 from tests.util.keyring import TempKeyring
 

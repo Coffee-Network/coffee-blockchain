@@ -3,8 +3,8 @@ from typing import Dict
 
 import click
 
-from chia.util.config import load_config, save_config, str2bool
-from chia.util.default_root import DEFAULT_ROOT_PATH
+from coffee.util.config import load_config, save_config, str2bool
+from coffee.util.default_root import DEFAULT_ROOT_PATH
 
 
 def configure(
@@ -93,8 +93,8 @@ def configure(
         if testnet == "true" or testnet == "t":
             print("Setting Testnet")
             testnet_port = "58444"
-            testnet_introducer = "beta1_introducer.chia.net"
-            testnet_dns_introducer = "dns-introducer-testnet7.chia.net"
+            testnet_introducer = "beta1_introducer.coffee.net"
+            testnet_dns_introducer = "dns-introducer-testnet7.coffee.net"
             testnet = "testnet7"
             config["full_node"]["port"] = int(testnet_port)
             config["full_node"]["introducer_peer"]["port"] = int(testnet_port)
@@ -120,8 +120,8 @@ def configure(
         elif testnet == "false" or testnet == "f":
             print("Setting Mainnet")
             mainnet_port = "8444"
-            mainnet_introducer = "introducer.chia.net"
-            mainnet_dns_introducer = "dns-introducer.chia.net"
+            mainnet_introducer = "introducer.coffee.net"
+            mainnet_dns_introducer = "dns-introducer.coffee.net"
             net = "mainnet"
             config["full_node"]["port"] = int(mainnet_port)
             config["full_node"]["introducer_peer"]["port"] = int(mainnet_port)

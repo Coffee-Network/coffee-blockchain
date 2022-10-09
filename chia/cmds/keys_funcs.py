@@ -2,13 +2,13 @@ from typing import List
 
 from blspy import AugSchemeMPL, G1Element, G2Element
 
-from chia.consensus.coinbase import create_puzzlehash_for_pk
-from chia.util.bech32m import encode_puzzle_hash
-from chia.util.config import load_config
-from chia.util.default_root import DEFAULT_ROOT_PATH
-from chia.util.ints import uint32
-from chia.util.keychain import Keychain, bytes_to_mnemonic, generate_mnemonic, unlocks_keyring
-from chia.wallet.derive_keys import master_sk_to_farmer_sk, master_sk_to_pool_sk, master_sk_to_wallet_sk
+from coffee.consensus.coinbase import create_puzzlehash_for_pk
+from coffee.util.bech32m import encode_puzzle_hash
+from coffee.util.config import load_config
+from coffee.util.default_root import DEFAULT_ROOT_PATH
+from coffee.util.ints import uint32
+from coffee.util.keychain import Keychain, bytes_to_mnemonic, generate_mnemonic, unlocks_keyring
+from coffee.wallet.derive_keys import master_sk_to_farmer_sk, master_sk_to_pool_sk, master_sk_to_wallet_sk
 
 keychain: Keychain = Keychain()
 

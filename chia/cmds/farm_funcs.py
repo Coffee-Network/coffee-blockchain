@@ -4,20 +4,20 @@ from typing import Any, Dict, List, Optional
 
 import aiohttp
 
-from chia.cmds.units import units
-from chia.consensus.block_record import BlockRecord
-from chia.consensus.coinbase import create_puzzlehash_for_pk
-from chia.rpc.farmer_rpc_client import FarmerRpcClient
-from chia.rpc.full_node_rpc_client import FullNodeRpcClient
-from chia.rpc.wallet_rpc_client import WalletRpcClient
-from chia.types.blockchain_format.sized_bytes import bytes32
-from chia.util.bech32m import encode_puzzle_hash
-from chia.util.byte_types import hexstr_to_bytes
-from chia.util.config import load_config
-from chia.util.default_root import DEFAULT_ROOT_PATH
-from chia.util.ints import uint16, uint64
-from chia.util.misc import format_bytes, format_minutes
-from chia.util.network import is_localhost
+from coffee.cmds.units import units
+from coffee.consensus.block_record import BlockRecord
+from coffee.consensus.coinbase import create_puzzlehash_for_pk
+from coffee.rpc.farmer_rpc_client import FarmerRpcClient
+from coffee.rpc.full_node_rpc_client import FullNodeRpcClient
+from coffee.rpc.wallet_rpc_client import WalletRpcClient
+from coffee.types.blockchain_format.sized_bytes import bytes32
+from coffee.util.bech32m import encode_puzzle_hash
+from coffee.util.byte_types import hexstr_to_bytes
+from coffee.util.config import load_config
+from coffee.util.default_root import DEFAULT_ROOT_PATH
+from coffee.util.ints import uint16, uint64
+from coffee.util.misc import format_bytes, format_minutes
+from coffee.util.network import is_localhost
 
 SECONDS_PER_BLOCK = (24 * 3600) / 4608
 
@@ -237,9 +237,9 @@ async def summary(
         print("Farming")
 
     if amounts is not None:
-        print(f"Total silicoin farmed: {amounts['farmed_amount'] / units['chia']}")
-        print(f"User transaction fees: {amounts['fee_amount'] / units['chia']}")
-        print(f"Block rewards: {(amounts['farmer_reward_amount'] + amounts['pool_reward_amount']) / units['chia']}")
+        print(f"Total silicoin farmed: {amounts['farmed_amount'] / units['coffee']}")
+        print(f"User transaction fees: {amounts['fee_amount'] / units['coffee']}")
+        print(f"Block rewards: {(amounts['farmer_reward_amount'] + amounts['pool_reward_amount']) / units['coffee']}")
         print(f"Last height farmed: {amounts['last_height_farmed']}")
 
     class PlotStats:

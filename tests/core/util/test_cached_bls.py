@@ -1,7 +1,7 @@
 import unittest
 from blspy import AugSchemeMPL, G1Element
-from chia.util import cached_bls
-from chia.util.lru_cache import LRUCache
+from coffee.util import cached_bls
+from coffee.util.lru_cache import LRUCache
 
 
 class TestCachedBLS(unittest.TestCase):

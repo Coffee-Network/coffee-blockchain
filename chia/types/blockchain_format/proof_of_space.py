@@ -7,13 +7,13 @@ from bitstring import BitArray
 from blspy import AugSchemeMPL, G1Element, PrivateKey
 from chiapos import Verifier
 
-from chia.consensus.coinbase import create_puzzlehash_for_pk
-from chia.consensus.constants import ConsensusConstants
-from chia.types.blockchain_format.sized_bytes import bytes32
-from chia.util.bech32m import encode_puzzle_hash
-from chia.util.hash import std_hash
-from chia.util.ints import uint8
-from chia.util.streamable import Streamable, streamable
+from coffee.consensus.coinbase import create_puzzlehash_for_pk
+from coffee.consensus.constants import ConsensusConstants
+from coffee.types.blockchain_format.sized_bytes import bytes32
+from coffee.util.bech32m import encode_puzzle_hash
+from coffee.util.hash import std_hash
+from coffee.util.ints import uint8
+from coffee.util.streamable import Streamable, streamable
 
 log = logging.getLogger(__name__)
 

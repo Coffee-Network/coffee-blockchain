@@ -9,18 +9,18 @@ from typing import Any, Callable, Dict, List, Optional, Tuple
 import aiohttp
 from blspy import AugSchemeMPL, G1Element, G2Element, PrivateKey
 
-import chia.server.ws_connection as ws  # lgtm [py/import-and-import-from]
-from chia.consensus.coinbase import create_puzzlehash_for_pk
-from chia.consensus.constants import ConsensusConstants
-from chia.daemon.keychain_proxy import (
+import coffee.server.ws_connection as ws  # lgtm [py/import-and-import-from]
+from coffee.consensus.coinbase import create_puzzlehash_for_pk
+from coffee.consensus.constants import ConsensusConstants
+from coffee.daemon.keychain_proxy import (
     KeychainProxy,
     KeychainProxyConnectionFailure,
     connect_to_keychain_and_validate,
     wrap_local_keychain,
 )
-from chia.pools.pool_config import PoolWalletConfig, load_pool_config
-from chia.protocols import farmer_protocol, harvester_protocol
-from chia.protocols.pool_protocol import (
+from coffee.pools.pool_config import PoolWalletConfig, load_pool_config
+from coffee.protocols import farmer_protocol, harvester_protocol
+from coffee.protocols.pool_protocol import (
     AuthenticationPayload,
     ErrorResponse,
     GetFarmerResponse,
@@ -31,27 +31,27 @@ from chia.protocols.pool_protocol import (
     PutFarmerRequest,
     get_current_authentication_token,
 )
-from chia.protocols.protocol_message_types import ProtocolMessageTypes
-from chia.server.outbound_message import NodeType, make_msg
-from chia.server.server import ssl_context_for_root
-from chia.server.ws_connection import WSChiaConnection
-from chia.ssl.create_ssl import get_mozilla_ca_crt
-from chia.types.blockchain_format.proof_of_space import ProofOfSpace
-from chia.types.blockchain_format.sized_bytes import bytes32
-from chia.util.bech32m import decode_puzzle_hash
-from chia.util.byte_types import hexstr_to_bytes
-from chia.util.config import config_path_for_filename, load_config, save_config
-from chia.util.hash import std_hash
-from chia.util.ints import uint8, uint16, uint32, uint64
-from chia.util.keychain import Keychain
-from chia.wallet.derive_keys import (
+from coffee.protocols.protocol_message_types import ProtocolMessageTypes
+from coffee.server.outbound_message import NodeType, make_msg
+from coffee.server.server import ssl_context_for_root
+from coffee.server.ws_connection import WSCoffeeConnection
+from coffee.ssl.create_ssl import get_mozilla_ca_crt
+from coffee.types.blockchain_format.proof_of_space import ProofOfSpace
+from coffee.types.blockchain_format.sized_bytes import bytes32
+from coffee.util.bech32m import decode_puzzle_hash
+from coffee.util.byte_types import hexstr_to_bytes
+from coffee.util.config import config_path_for_filename, load_config, save_config
+from coffee.util.hash import std_hash
+from coffee.util.ints import uint8, uint16, uint32, uint64
+from coffee.util.keychain import Keychain
+from coffee.wallet.derive_keys import (
     find_authentication_sk,
     find_owner_sk,
     master_sk_to_farmer_sk,
     master_sk_to_pool_sk,
     master_sk_to_wallet_sk,
 )
-from chia.wallet.puzzles.singleton_top_layer import SINGLETON_MOD
+from coffee.wallet.puzzles.singleton_top_layer import SINGLETON_MOD
 
 singleton_mod_hash = SINGLETON_MOD.get_tree_hash()
 
@@ -197,7 +197,7 @@ class Farmer:
     def _set_state_changed_callback(self, callback: Callable):
         self.state_changed_callback = callback
 
-    async def on_connect(self, peer: WSChiaConnection):
+    async def on_connect(self, peer: WSCoffeeConnection):
         # Sends a handshake to the harvester
         self.state_changed("add_connection", {})
         handshake = harvester_protocol.HarvesterHandshake(
@@ -221,7 +221,7 @@ class Farmer:
             ErrorResponse(uint16(PoolErrorCode.REQUEST_FAILED.value), error_message).to_json_dict()
         )
 
-    def on_disconnect(self, connection: ws.WSChiaConnection):
+    def on_disconnect(self, connection: ws.WSCoffeeConnection):
         self.log.info(f"peer disconnected {connection.get_peer_logging()}")
         self.state_changed("close_connection", {})
 
@@ -634,7 +634,7 @@ class Farmer:
                     )
         return updated
 
-    async def get_cached_harvesters(self, connection: WSChiaConnection) -> HarvesterCacheEntry:
+    async def get_cached_harvesters(self, connection: WSCoffeeConnection) -> HarvesterCacheEntry:
         host_cache = self.harvester_cache.get(connection.peer_host)
         if host_cache is None:
             host_cache = {}

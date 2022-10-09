@@ -3,10 +3,10 @@ import time
 from decimal import Decimal
 from typing import Callable, Optional
 
-from chia.protocols import timelord_protocol
-from chia.timelord.timelord import Chain, IterationType, Timelord, iters_from_block
-from chia.util.api_decorators import api_request
-from chia.util.ints import uint64
+from coffee.protocols import timelord_protocol
+from coffee.timelord.timelord import Chain, IterationType, Timelord, iters_from_block
+from coffee.util.api_decorators import api_request
+from coffee.util.ints import uint64
 
 log = logging.getLogger(__name__)
 

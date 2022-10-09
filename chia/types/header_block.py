@@ -1,11 +1,11 @@
 from dataclasses import dataclass
 from typing import List, Optional
 
-from chia.types.blockchain_format.foliage import Foliage, FoliageTransactionBlock, TransactionsInfo
-from chia.types.blockchain_format.reward_chain_block import RewardChainBlock
-from chia.types.blockchain_format.vdf import VDFProof
-from chia.types.end_of_slot_bundle import EndOfSubSlotBundle
-from chia.util.streamable import Streamable, streamable
+from coffee.types.blockchain_format.foliage import Foliage, FoliageTransactionBlock, TransactionsInfo
+from coffee.types.blockchain_format.reward_chain_block import RewardChainBlock
+from coffee.types.blockchain_format.vdf import VDFProof
+from coffee.types.end_of_slot_bundle import EndOfSubSlotBundle
+from coffee.util.streamable import Streamable, streamable
 
 
 @dataclass(frozen=True)

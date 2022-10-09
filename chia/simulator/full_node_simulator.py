@@ -1,12 +1,12 @@
 from typing import List, Optional
 
-from chia.consensus.block_record import BlockRecord
-from chia.full_node.full_node_api import FullNodeAPI
-from chia.protocols.full_node_protocol import RespondBlock
-from chia.simulator.simulator_protocol import FarmNewBlockProtocol, ReorgProtocol
-from chia.types.full_block import FullBlock
-from chia.util.api_decorators import api_request
-from chia.util.ints import uint8
+from coffee.consensus.block_record import BlockRecord
+from coffee.full_node.full_node_api import FullNodeAPI
+from coffee.protocols.full_node_protocol import RespondBlock
+from coffee.simulator.simulator_protocol import FarmNewBlockProtocol, ReorgProtocol
+from coffee.types.full_block import FullBlock
+from coffee.util.api_decorators import api_request
+from coffee.util.ints import uint8
 
 
 class FullNodeSimulator(FullNodeAPI):

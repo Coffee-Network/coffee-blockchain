@@ -1,6 +1,6 @@
 from dataclasses import dataclass
 
-from chia.util.streamable import Streamable, streamable
+from coffee.util.streamable import Streamable, streamable
 
 
 @dataclass(frozen=True)

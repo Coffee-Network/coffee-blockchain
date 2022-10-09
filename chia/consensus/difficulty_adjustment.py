@@ -1,11 +1,11 @@
 from typing import List, Optional, Tuple
 
-from chia.consensus.block_record import BlockRecord
-from chia.consensus.blockchain_interface import BlockchainInterface
-from chia.consensus.constants import ConsensusConstants
-from chia.types.blockchain_format.sized_bytes import bytes32
-from chia.util.ints import uint8, uint32, uint64, uint128
-from chia.util.significant_bits import count_significant_bits, truncate_to_significant_bits
+from coffee.consensus.block_record import BlockRecord
+from coffee.consensus.blockchain_interface import BlockchainInterface
+from coffee.consensus.constants import ConsensusConstants
+from coffee.types.blockchain_format.sized_bytes import bytes32
+from coffee.util.ints import uint8, uint32, uint64, uint128
+from coffee.util.significant_bits import count_significant_bits, truncate_to_significant_bits
 
 
 def _get_blocks_at_height(

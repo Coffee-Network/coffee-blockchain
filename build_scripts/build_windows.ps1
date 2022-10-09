@@ -34,15 +34,15 @@ pip install pyinstaller==4.5
 pip install setuptools_scm
 
 Write-Output "   ---"
-Write-Output "Get CHIA_INSTALLER_VERSION"
-# The environment variable CHIA_INSTALLER_VERSION needs to be defined
-$env:CHIA_INSTALLER_VERSION = python .\build_scripts\installer-version.py -win
+Write-Output "Get COFFEE_INSTALLER_VERSION"
+# The environment variable COFFEE_INSTALLER_VERSION needs to be defined
+$env:COFFEE_INSTALLER_VERSION = python .\build_scripts\installer-version.py -win
 
-if (-not (Test-Path env:CHIA_INSTALLER_VERSION)) {
-  $env:CHIA_INSTALLER_VERSION = '0.0.0'
-  Write-Output "WARNING: No environment variable CHIA_INSTALLER_VERSION set. Using 0.0.0"
+if (-not (Test-Path env:COFFEE_INSTALLER_VERSION)) {
+  $env:COFFEE_INSTALLER_VERSION = '0.0.0'
+  Write-Output "WARNING: No environment variable COFFEE_INSTALLER_VERSION set. Using 0.0.0"
   }
-Write-Output "Chia Version is: $env:CHIA_INSTALLER_VERSION"
+Write-Output "Coffee Version is: $env:COFFEE_INSTALLER_VERSION"
 Write-Output "   ---"
 
 Write-Output "Checking if madmax exists"
@@ -60,12 +60,12 @@ if (Test-Path -Path .\bladebit\) {
 }
 
 Write-Output "   ---"
-Write-Output "Build chia-blockchain wheels"
+Write-Output "Build coffee-blockchain wheels"
 Write-Output "   ---"
 pip wheel --use-pep517 --extra-index-url https://pypi.chia.net/simple/ -f . --wheel-dir=.\build_scripts\win_build .
 
 Write-Output "   ---"
-Write-Output "Install chia-blockchain wheels into venv with pip"
+Write-Output "Install coffee-blockchain wheels into venv with pip"
 Write-Output "   ---"
 
 Write-Output "pip install miniupnpc"
@@ -74,8 +74,8 @@ pip install --no-index --find-links=.\win_build\ miniupnpc
 # Write-Output "pip install setproctitle"
 # pip install setproctitle==1.2.2
 
-Write-Output "pip install chia-blockchain"
-pip install --no-index --find-links=.\win_build\ chia-blockchain
+Write-Output "pip install coffee-blockchain"
+pip install --no-index --find-links=.\win_build\ coffee-blockchain
 
 Write-Output "pip install keyring"
 pip install bitstring --no-binary :all:
@@ -85,7 +85,7 @@ pip install keyrings.cryptfile==1.3.4 --no-binary :all:
 Write-Output "   ---"
 Write-Output "Use pyinstaller to create silicoin .exe's"
 Write-Output "   ---"
-$SPEC_FILE = (python -c 'import chia; print(chia.PYINSTALLER_SPEC_PATH)') -join "`n"
+$SPEC_FILE = (python -c 'import coffee; print(coffee.PYINSTALLER_SPEC_PATH)') -join "`n"
 pyinstaller --log-level INFO $SPEC_FILE
 
 Write-Output "   ---"
@@ -118,11 +118,11 @@ If ($LastExitCode -gt 0){
 Write-Output "   ---"
 Write-Output "Increase the stack for silicoin command for (silicoin plots create) chiapos limitations"
 # editbin.exe needs to be in the path
-editbin.exe /STACK:8000000 daemon\chia.exe
+editbin.exe /STACK:8000000 daemon\coffee.exe
 Write-Output "   ---"
 
 $appName = "Coffee"
-$packageVersion = "$env:CHIA_INSTALLER_VERSION"
+$packageVersion = "$env:COFFEE_INSTALLER_VERSION"
 $packageName = "$appName-$packageVersion"
 
 Write-Output "packageName is $packageName"
@@ -131,7 +131,7 @@ Write-Output "   ---"
 Write-Output "fix version in package.json"
 choco install jq
 cp package.json package.json.orig
-jq --arg VER "$env:CHIA_INSTALLER_VERSION" '.version=$VER' package.json > temp.json
+jq --arg VER "$env:COFFEE_INSTALLER_VERSION" '.version=$VER' package.json > temp.json
 rm package.json
 mv temp.json package.json
 Write-Output "   ---"

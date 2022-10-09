@@ -2,16 +2,16 @@ import asyncio
 import logging
 import pytest
 
-from chia.rpc.rpc_server import start_rpc_server
-from chia.rpc.wallet_rpc_api import WalletRpcApi
-from chia.rpc.wallet_rpc_client import WalletRpcClient
-from chia.simulator.simulator_protocol import FarmNewBlockProtocol
-from chia.types.peer_info import PeerInfo
-from chia.util.ints import uint16, uint64
-from chia.wallet.util.wallet_types import WalletType
+from coffee.rpc.rpc_server import start_rpc_server
+from coffee.rpc.wallet_rpc_api import WalletRpcApi
+from coffee.rpc.wallet_rpc_client import WalletRpcClient
+from coffee.simulator.simulator_protocol import FarmNewBlockProtocol
+from coffee.types.peer_info import PeerInfo
+from coffee.util.ints import uint16, uint64
+from coffee.wallet.util.wallet_types import WalletType
 from tests.setup_nodes import self_hostname, setup_simulators_and_wallets, bt
 from tests.time_out_assert import time_out_assert
-from chia.wallet.did_wallet.did_wallet import DIDWallet
+from coffee.wallet.did_wallet.did_wallet import DIDWallet
 
 
 log = logging.getLogger(__name__)

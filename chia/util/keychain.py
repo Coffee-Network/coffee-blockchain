@@ -12,12 +12,12 @@ import pkg_resources
 from bitstring import BitArray  # pyright: reportMissingImports=false
 from blspy import AugSchemeMPL, G1Element, PrivateKey  # pyright: reportMissingImports=false
 
-from chia.util.hash import std_hash
-from chia.util.keyring_wrapper import KeyringWrapper
+from coffee.util.hash import std_hash
+from coffee.util.keyring_wrapper import KeyringWrapper
 
 CURRENT_KEY_VERSION = "1.8"
-DEFAULT_USER = f"user-silicoin-{CURRENT_KEY_VERSION}"  # e.g. user-chia-1.8
-DEFAULT_SERVICE = f"chia-{DEFAULT_USER}"  # e.g. chia-user-chia-1.8
+DEFAULT_USER = f"user-silicoin-{CURRENT_KEY_VERSION}"  # e.g. user-coffee-1.8
+DEFAULT_SERVICE = f"coffee-{DEFAULT_USER}"  # e.g. coffee-user-coffee-1.8
 DEFAULT_PASSPHRASE_PROMPT = (
     colorama.Fore.YELLOW + colorama.Style.BRIGHT + "(Unlock Keyring)" + colorama.Style.RESET_ALL + " Passphrase: "
 )  # noqa: E501
@@ -76,7 +76,7 @@ def obtain_current_passphrase(prompt: str = DEFAULT_PASSPHRASE_PROMPT, use_passp
     prompted interactively to enter their passphrase a max of MAX_RETRIES times
     before failing.
     """
-    from chia.cmds.passphrase_funcs import prompt_for_passphrase
+    from coffee.cmds.passphrase_funcs import prompt_for_passphrase
 
     if use_passphrase_cache:
         passphrase, validated = KeyringWrapper.get_shared_instance().get_cached_master_passphrase()

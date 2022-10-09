@@ -3,13 +3,13 @@ from typing import Dict, List, Optional, Set
 
 import aiosqlite
 
-from chia.types.blockchain_format.coin import Coin
-from chia.types.blockchain_format.sized_bytes import bytes32
-from chia.types.coin_record import CoinRecord
-from chia.util.db_wrapper import DBWrapper
-from chia.util.ints import uint32, uint64
-from chia.wallet.util.wallet_types import WalletType
-from chia.wallet.wallet_coin_record import WalletCoinRecord
+from coffee.types.blockchain_format.coin import Coin
+from coffee.types.blockchain_format.sized_bytes import bytes32
+from coffee.types.coin_record import CoinRecord
+from coffee.util.db_wrapper import DBWrapper
+from coffee.util.ints import uint32, uint64
+from coffee.wallet.util.wallet_types import WalletType
+from coffee.wallet.wallet_coin_record import WalletCoinRecord
 
 
 class WalletCoinStore:

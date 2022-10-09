@@ -7,19 +7,19 @@ from typing import List, Optional
 
 import pytest
 
-from chia.consensus.blockchain import ReceiveBlockResult
-from chia.consensus.multiprocess_validation import PreValidationResult
-from chia.consensus.pot_iterations import is_overflow_block
-from chia.full_node.full_node_store import FullNodeStore
-from chia.full_node.signage_point import SignagePoint
-from chia.protocols import timelord_protocol
-from chia.protocols.timelord_protocol import NewInfusionPointVDF
-from chia.types.blockchain_format.sized_bytes import bytes32
-from chia.types.unfinished_block import UnfinishedBlock
-from chia.util.block_cache import BlockCache
+from coffee.consensus.blockchain import ReceiveBlockResult
+from coffee.consensus.multiprocess_validation import PreValidationResult
+from coffee.consensus.pot_iterations import is_overflow_block
+from coffee.full_node.full_node_store import FullNodeStore
+from coffee.full_node.signage_point import SignagePoint
+from coffee.protocols import timelord_protocol
+from coffee.protocols.timelord_protocol import NewInfusionPointVDF
+from coffee.types.blockchain_format.sized_bytes import bytes32
+from coffee.types.unfinished_block import UnfinishedBlock
+from coffee.util.block_cache import BlockCache
 from tests.block_tools import get_signage_point, create_block_tools
-from chia.util.hash import std_hash
-from chia.util.ints import uint8, uint32, uint64, uint128
+from coffee.util.hash import std_hash
+from coffee.util.ints import uint8, uint32, uint64, uint128
 from tests.setup_nodes import test_constants as test_constants_original
 from tests.util.blockchain import create_blockchain
 from tests.util.keyring import TempKeyring

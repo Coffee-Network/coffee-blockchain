@@ -4,22 +4,22 @@ from typing import List, Optional, Set, Tuple
 
 import pytest
 
-from chia.consensus.block_rewards import calculate_base_farmer_reward, calculate_pool_reward
-from chia.consensus.blockchain import Blockchain, ReceiveBlockResult
-from chia.consensus.coinbase import create_farmer_coin, create_pool_coin
-from chia.full_node.block_store import BlockStore
-from chia.full_node.coin_store import CoinStore
-from chia.full_node.hint_store import HintStore
-from chia.full_node.mempool_check_conditions import get_name_puzzle_conditions
-from chia.types.blockchain_format.coin import Coin
-from chia.types.coin_record import CoinRecord
-from chia.types.full_block import FullBlock
-from chia.types.generator_types import BlockGenerator
-from chia.util.generator_tools import tx_removals_and_additions
-from chia.util.ints import uint64, uint32
+from coffee.consensus.block_rewards import calculate_base_farmer_reward, calculate_pool_reward
+from coffee.consensus.blockchain import Blockchain, ReceiveBlockResult
+from coffee.consensus.coinbase import create_farmer_coin, create_pool_coin
+from coffee.full_node.block_store import BlockStore
+from coffee.full_node.coin_store import CoinStore
+from coffee.full_node.hint_store import HintStore
+from coffee.full_node.mempool_check_conditions import get_name_puzzle_conditions
+from coffee.types.blockchain_format.coin import Coin
+from coffee.types.coin_record import CoinRecord
+from coffee.types.full_block import FullBlock
+from coffee.types.generator_types import BlockGenerator
+from coffee.util.generator_tools import tx_removals_and_additions
+from coffee.util.ints import uint64, uint32
 from tests.wallet_tools import WalletTool
 from tests.setup_nodes import bt, test_constants
-from chia.types.blockchain_format.sized_bytes import bytes32
+from coffee.types.blockchain_format.sized_bytes import bytes32
 from tests.util.db_connection import DBConnection
 
 

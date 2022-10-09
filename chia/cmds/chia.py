@@ -3,23 +3,23 @@ from typing import Optional
 
 import click
 
-from chia import __version__
-from chia.cmds.configure import configure_cmd
-from chia.cmds.farm import farm_cmd
-from chia.cmds.init import init_cmd
-from chia.cmds.keys import keys_cmd
-from chia.cmds.netspace import netspace_cmd
-from chia.cmds.passphrase import passphrase_cmd
-from chia.cmds.plotnft import plotnft_cmd
-from chia.cmds.plots import plots_cmd
-from chia.cmds.plotters import plotters_cmd
-from chia.cmds.show import show_cmd
-from chia.cmds.start import start_cmd
-from chia.cmds.stop import stop_cmd
-from chia.cmds.wallet import wallet_cmd
-from chia.util.default_root import DEFAULT_KEYS_ROOT_PATH, DEFAULT_ROOT_PATH
-from chia.util.keychain import set_keys_root_path, supports_keyring_passphrase
-from chia.util.ssl_check import check_ssl
+from coffee import __version__
+from coffee.cmds.configure import configure_cmd
+from coffee.cmds.farm import farm_cmd
+from coffee.cmds.init import init_cmd
+from coffee.cmds.keys import keys_cmd
+from coffee.cmds.netspace import netspace_cmd
+from coffee.cmds.passphrase import passphrase_cmd
+from coffee.cmds.plotnft import plotnft_cmd
+from coffee.cmds.plots import plots_cmd
+from coffee.cmds.plotters import plotters_cmd
+from coffee.cmds.show import show_cmd
+from coffee.cmds.start import start_cmd
+from coffee.cmds.stop import stop_cmd
+from coffee.cmds.wallet import wallet_cmd
+from coffee.util.default_root import DEFAULT_KEYS_ROOT_PATH, DEFAULT_ROOT_PATH
+from coffee.util.keychain import set_keys_root_path, supports_keyring_passphrase
+from coffee.util.ssl_check import check_ssl
 
 CONTEXT_SETTINGS = dict(help_option_names=["-h", "--help"])
 DIST_NAME = "Venus"
@@ -69,7 +69,7 @@ def cli(
         set_keys_root_path(Path(keys_root_path))
 
     if passphrase_file is not None:
-        from chia.cmds.passphrase_funcs import cache_passphrase, read_passphrase_from_file
+        from coffee.cmds.passphrase_funcs import cache_passphrase, read_passphrase_from_file
 
         try:
             cache_passphrase(read_passphrase_from_file(passphrase_file))
@@ -80,7 +80,7 @@ def cli(
 
 
 if not supports_keyring_passphrase():
-    from chia.cmds.passphrase_funcs import remove_passphrase_options_from_cmd
+    from coffee.cmds.passphrase_funcs import remove_passphrase_options_from_cmd
 
     # TODO: Remove once keyring passphrase management is rolled out to all platforms
     remove_passphrase_options_from_cmd(cli)
@@ -103,8 +103,8 @@ def version_cmd() -> None:
 def run_daemon_cmd(ctx: click.Context, wait_for_unlock: bool) -> None:
     import asyncio
 
-    from chia.daemon.server import async_run_daemon
-    from chia.util.keychain import Keychain
+    from coffee.daemon.server import async_run_daemon
+    from coffee.util.keychain import Keychain
 
     wait_for_unlock = wait_for_unlock and Keychain.is_keyring_locked()
 

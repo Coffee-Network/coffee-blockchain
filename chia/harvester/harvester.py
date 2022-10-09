@@ -5,11 +5,11 @@ from concurrent.futures.thread import ThreadPoolExecutor
 from pathlib import Path
 from typing import Callable, Dict, List, Optional, Tuple
 
-from chia.consensus.coinbase import create_puzzlehash_for_pk
-import chia.server.ws_connection as ws  # lgtm [py/import-and-import-from]
-from chia.consensus.constants import ConsensusConstants
-from chia.plotting.manager import PlotManager
-from chia.plotting.util import (
+from coffee.consensus.coinbase import create_puzzlehash_for_pk
+import coffee.server.ws_connection as ws  # lgtm [py/import-and-import-from]
+from coffee.consensus.constants import ConsensusConstants
+from coffee.plotting.manager import PlotManager
+from coffee.plotting.util import (
     add_plot_directory,
     get_plot_directories,
     remove_plot_directory,
@@ -18,8 +18,8 @@ from chia.plotting.util import (
     PlotRefreshResult,
     PlotRefreshEvents,
 )
-from chia.util.streamable import dataclass_from_dict
-from chia.util.bech32m import encode_puzzle_hash
+from coffee.util.streamable import dataclass_from_dict
+from coffee.util.bech32m import encode_puzzle_hash
 
 log = logging.getLogger(__name__)
 
@@ -91,7 +91,7 @@ class Harvester:
         if update_result.loaded > 0:
             self.event_loop.call_soon_threadsafe(self._state_changed, "plots")
 
-    def on_disconnect(self, connection: ws.WSChiaConnection):
+    def on_disconnect(self, connection: ws.WSCoffeeConnection):
         self.log.info(f"peer disconnected {connection.get_peer_logging()}")
         self._state_changed("close_connection")
 

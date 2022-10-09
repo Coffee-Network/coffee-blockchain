@@ -1,22 +1,22 @@
 from typing import Any, Callable, Dict, List, Optional
 
-from chia.consensus.block_record import BlockRecord
-from chia.consensus.coinbase import create_puzzlehash_for_pk
-from chia.full_node.full_node import FullNode
-from chia.full_node.mempool_check_conditions import get_puzzle_and_solution_for_coin
-from chia.types.blockchain_format.program import Program, SerializedProgram
-from chia.types.blockchain_format.sized_bytes import bytes32
-from chia.types.coin_record import CoinRecord
-from chia.types.coin_spend import CoinSpend
-from chia.types.full_block import FullBlock
-from chia.types.generator_types import BlockGenerator
-from chia.types.mempool_inclusion_status import MempoolInclusionStatus
-from chia.types.spend_bundle import SpendBundle
-from chia.types.unfinished_header_block import UnfinishedHeaderBlock
-from chia.util.bech32m import encode_puzzle_hash
-from chia.util.byte_types import hexstr_to_bytes
-from chia.util.ints import uint32, uint64
-from chia.util.ws_message import WsRpcMessage, create_payload_dict
+from coffee.consensus.block_record import BlockRecord
+from coffee.consensus.coinbase import create_puzzlehash_for_pk
+from coffee.full_node.full_node import FullNode
+from coffee.full_node.mempool_check_conditions import get_puzzle_and_solution_for_coin
+from coffee.types.blockchain_format.program import Program, SerializedProgram
+from coffee.types.blockchain_format.sized_bytes import bytes32
+from coffee.types.coin_record import CoinRecord
+from coffee.types.coin_spend import CoinSpend
+from coffee.types.full_block import FullBlock
+from coffee.types.generator_types import BlockGenerator
+from coffee.types.mempool_inclusion_status import MempoolInclusionStatus
+from coffee.types.spend_bundle import SpendBundle
+from coffee.types.unfinished_header_block import UnfinishedHeaderBlock
+from coffee.util.bech32m import encode_puzzle_hash
+from coffee.util.byte_types import hexstr_to_bytes
+from coffee.util.ints import uint32, uint64
+from coffee.util.ws_message import WsRpcMessage, create_payload_dict
 
 
 class FullNodeRpcApi:

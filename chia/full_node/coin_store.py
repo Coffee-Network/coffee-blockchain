@@ -4,13 +4,13 @@ from typing import Dict, List, Optional, Set
 
 import aiosqlite
 
-from chia.protocols.wallet_protocol import CoinState
-from chia.types.blockchain_format.coin import Coin
-from chia.types.blockchain_format.sized_bytes import bytes32
-from chia.types.coin_record import CoinRecord
-from chia.util.db_wrapper import DBWrapper
-from chia.util.ints import uint32, uint64
-from chia.util.lru_cache import LRUCache
+from coffee.protocols.wallet_protocol import CoinState
+from coffee.types.blockchain_format.coin import Coin
+from coffee.types.blockchain_format.sized_bytes import bytes32
+from coffee.types.coin_record import CoinRecord
+from coffee.util.db_wrapper import DBWrapper
+from coffee.util.ints import uint32, uint64
+from coffee.util.lru_cache import LRUCache
 
 log = logging.getLogger(__name__)
 
@@ -57,7 +57,7 @@ class CoinStore:
 
         await self.coin_record_db.execute("CREATE INDEX IF NOT EXISTS coin_spent_index on coin_record(spent_index)")
 
-        # earlier versions of chia created this index despite no lookups needing
+        # earlier versions of coffee created this index despite no lookups needing
         # it. For now, just don't create it for new installs. In the future we
         # may remove the index from existing installations as well
         # await self.coin_record_db.execute("DROP INDEX IF EXISTS coin_spent")

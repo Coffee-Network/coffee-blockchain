@@ -7,15 +7,15 @@ from typing import Dict, List, Optional, Tuple
 from blspy import AugSchemeMPL, G1Element, PrivateKey
 from chiapos import DiskPlotter
 
-from chia.daemon.keychain_proxy import KeychainProxy, connect_to_keychain_and_validate, wrap_local_keychain
-from chia.plotting.util import add_plot_directory, stream_plot_info_ph, stream_plot_info_pk
-from chia.types.blockchain_format.proof_of_space import ProofOfSpace
-from chia.types.blockchain_format.sized_bytes import bytes32
-from chia.util.bech32m import decode_puzzle_hash
-from chia.util.config import config_path_for_filename, load_config
-from chia.util.keychain import Keychain
-from chia.util.path import mkdir
-from chia.wallet.derive_keys import master_sk_to_farmer_sk, master_sk_to_local_sk, master_sk_to_pool_sk
+from coffee.daemon.keychain_proxy import KeychainProxy, connect_to_keychain_and_validate, wrap_local_keychain
+from coffee.plotting.util import add_plot_directory, stream_plot_info_ph, stream_plot_info_pk
+from coffee.types.blockchain_format.proof_of_space import ProofOfSpace
+from coffee.types.blockchain_format.sized_bytes import bytes32
+from coffee.util.bech32m import decode_puzzle_hash
+from coffee.util.config import config_path_for_filename, load_config
+from coffee.util.keychain import Keychain
+from coffee.util.path import mkdir
+from coffee.wallet.derive_keys import master_sk_to_farmer_sk, master_sk_to_local_sk, master_sk_to_pool_sk
 
 log = logging.getLogger(__name__)
 

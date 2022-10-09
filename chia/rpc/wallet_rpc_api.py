@@ -6,41 +6,41 @@ from typing import Callable, Dict, List, Optional, Tuple
 
 from blspy import G1Element, PrivateKey
 
-from chia.consensus.block_rewards import calculate_base_farmer_reward
-from chia.consensus.coinbase import create_puzzlehash_for_pk
-from chia.pools.pool_puzzles import SINGLETON_MOD_HASH, create_p2_singleton_puzzle
-from chia.pools.pool_wallet import PoolWallet
-from chia.pools.pool_wallet_info import FARMING_TO_POOL, PoolState, PoolWalletInfo, create_pool_state
-from chia.protocols.protocol_message_types import ProtocolMessageTypes
-from chia.server.outbound_message import NodeType, make_msg
-from chia.simulator.simulator_protocol import FarmNewBlockProtocol
-from chia.types.blockchain_format.coin import Coin
-from chia.types.blockchain_format.program import Program, SerializedProgram
-from chia.types.blockchain_format.sized_bytes import bytes32
-from chia.util.bech32m import decode_puzzle_hash, encode_puzzle_hash
-from chia.util.byte_types import hexstr_to_bytes
-from chia.util.config import load_config
-from chia.util.ints import uint32, uint64
-from chia.util.keychain import KeyringIsLocked, bytes_to_mnemonic, generate_mnemonic
-from chia.util.path import path_from_root
-from chia.util.ws_message import WsRpcMessage, create_payload_dict
-from chia.wallet.cc_wallet.cc_wallet import CCWallet
-from chia.wallet.derive_keys import (
+from coffee.consensus.block_rewards import calculate_base_farmer_reward
+from coffee.consensus.coinbase import create_puzzlehash_for_pk
+from coffee.pools.pool_puzzles import SINGLETON_MOD_HASH, create_p2_singleton_puzzle
+from coffee.pools.pool_wallet import PoolWallet
+from coffee.pools.pool_wallet_info import FARMING_TO_POOL, PoolState, PoolWalletInfo, create_pool_state
+from coffee.protocols.protocol_message_types import ProtocolMessageTypes
+from coffee.server.outbound_message import NodeType, make_msg
+from coffee.simulator.simulator_protocol import FarmNewBlockProtocol
+from coffee.types.blockchain_format.coin import Coin
+from coffee.types.blockchain_format.program import Program, SerializedProgram
+from coffee.types.blockchain_format.sized_bytes import bytes32
+from coffee.util.bech32m import decode_puzzle_hash, encode_puzzle_hash
+from coffee.util.byte_types import hexstr_to_bytes
+from coffee.util.config import load_config
+from coffee.util.ints import uint32, uint64
+from coffee.util.keychain import KeyringIsLocked, bytes_to_mnemonic, generate_mnemonic
+from coffee.util.path import path_from_root
+from coffee.util.ws_message import WsRpcMessage, create_payload_dict
+from coffee.wallet.cc_wallet.cc_wallet import CCWallet
+from coffee.wallet.derive_keys import (
     master_sk_to_farmer_sk,
     master_sk_to_pool_sk,
     master_sk_to_singleton_owner_sk,
     master_sk_to_wallet_sk,
 )
-from chia.wallet.did_wallet.did_wallet import DIDWallet
-from chia.wallet.rl_wallet.rl_wallet import RLWallet
-from chia.wallet.trade_record import TradeRecord
-from chia.wallet.transaction_record import TransactionRecord
-from chia.wallet.util.backup_utils import download_backup, get_backup_info, upload_backup
-from chia.wallet.util.trade_utils import trade_record_to_dict
-from chia.wallet.util.transaction_type import TransactionType
-from chia.wallet.util.wallet_types import WalletType
-from chia.wallet.wallet_info import WalletInfo
-from chia.wallet.wallet_node import WalletNode
+from coffee.wallet.did_wallet.did_wallet import DIDWallet
+from coffee.wallet.rl_wallet.rl_wallet import RLWallet
+from coffee.wallet.trade_record import TradeRecord
+from coffee.wallet.transaction_record import TransactionRecord
+from coffee.wallet.util.backup_utils import download_backup, get_backup_info, upload_backup
+from coffee.wallet.util.trade_utils import trade_record_to_dict
+from coffee.wallet.util.transaction_type import TransactionType
+from coffee.wallet.util.wallet_types import WalletType
+from coffee.wallet.wallet_info import WalletInfo
+from coffee.wallet.wallet_node import WalletNode
 
 # Timeout for response from wallet/full node for sending a transaction
 TIMEOUT = 30
@@ -572,7 +572,7 @@ class WalletRpcApi:
             if request["mode"] == "new":
                 owner_puzzle_hash: bytes32 = await self.service.wallet_state_manager.main_wallet.get_puzzle_hash(True)
 
-                from chia.pools.pool_wallet_info import initial_pool_state_from_dict
+                from coffee.pools.pool_wallet_info import initial_pool_state_from_dict
 
                 async with self.service.wallet_state_manager.lock:
                     last_wallet: Optional[

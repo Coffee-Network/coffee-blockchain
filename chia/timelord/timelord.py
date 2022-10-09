@@ -10,28 +10,28 @@ from typing import Callable, Dict, List, Optional, Set, Tuple
 
 from chiavdf import create_discriminant
 
-from chia.consensus.constants import ConsensusConstants
-from chia.consensus.pot_iterations import calculate_sp_iters, is_overflow_block
-from chia.protocols import timelord_protocol
-from chia.protocols.protocol_message_types import ProtocolMessageTypes
-from chia.server.outbound_message import NodeType, make_msg
-from chia.server.server import ChiaServer
-from chia.timelord.iters_from_block import iters_from_block
-from chia.timelord.timelord_state import LastState
-from chia.timelord.types import Chain, IterationType, StateType
-from chia.types.blockchain_format.classgroup import ClassgroupElement
-from chia.types.blockchain_format.reward_chain_block import RewardChainBlock
-from chia.types.blockchain_format.sized_bytes import bytes32
-from chia.types.blockchain_format.slots import (
+from coffee.consensus.constants import ConsensusConstants
+from coffee.consensus.pot_iterations import calculate_sp_iters, is_overflow_block
+from coffee.protocols import timelord_protocol
+from coffee.protocols.protocol_message_types import ProtocolMessageTypes
+from coffee.server.outbound_message import NodeType, make_msg
+from coffee.server.server import CoffeeServer
+from coffee.timelord.iters_from_block import iters_from_block
+from coffee.timelord.timelord_state import LastState
+from coffee.timelord.types import Chain, IterationType, StateType
+from coffee.types.blockchain_format.classgroup import ClassgroupElement
+from coffee.types.blockchain_format.reward_chain_block import RewardChainBlock
+from coffee.types.blockchain_format.sized_bytes import bytes32
+from coffee.types.blockchain_format.slots import (
     ChallengeChainSubSlot,
     InfusedChallengeChainSubSlot,
     RewardChainSubSlot,
     SubSlotProofs,
 )
-from chia.types.blockchain_format.sub_epoch_summary import SubEpochSummary
-from chia.types.blockchain_format.vdf import VDFInfo, VDFProof
-from chia.types.end_of_slot_bundle import EndOfSubSlotBundle
-from chia.util.ints import uint8, uint32, uint64, uint128
+from coffee.types.blockchain_format.sub_epoch_summary import SubEpochSummary
+from coffee.types.blockchain_format.vdf import VDFInfo, VDFProof
+from coffee.types.end_of_slot_bundle import EndOfSubSlotBundle
+from coffee.util.ints import uint8, uint32, uint64, uint128
 
 log = logging.getLogger(__name__)
 
@@ -45,7 +45,7 @@ class Timelord:
         self.free_clients: List[Tuple[str, asyncio.StreamReader, asyncio.StreamWriter]] = []
         self.potential_free_clients: List = []
         self.ip_whitelist = self.config["vdf_clients"]["ip"]
-        self.server: Optional[ChiaServer] = None
+        self.server: Optional[CoffeeServer] = None
         self.chain_type_to_stream: Dict[Chain, Tuple[str, asyncio.StreamReader, asyncio.StreamWriter]] = {}
         self.chain_start_time: Dict = {}
         # Chains that currently don't have a vdf_client.
@@ -117,7 +117,7 @@ class Timelord:
     async def _await_closed(self):
         pass
 
-    def set_server(self, server: ChiaServer):
+    def set_server(self, server: CoffeeServer):
         self.server = server
 
     async def _handle_client(self, reader: asyncio.StreamReader, writer: asyncio.StreamWriter):

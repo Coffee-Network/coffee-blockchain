@@ -1,10 +1,10 @@
 from dataclasses import dataclass
 from typing import List
 
-from chia.types.blockchain_format.coin import Coin
-from chia.types.blockchain_format.program import SerializedProgram, INFINITE_COST
-from chia.util.chain_utils import additions_for_solution, fee_for_solution
-from chia.util.streamable import Streamable, streamable
+from coffee.types.blockchain_format.coin import Coin
+from coffee.types.blockchain_format.program import SerializedProgram, INFINITE_COST
+from coffee.util.chain_utils import additions_for_solution, fee_for_solution
+from coffee.util.streamable import Streamable, streamable
 
 
 @dataclass(frozen=True)

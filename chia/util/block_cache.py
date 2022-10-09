@@ -4,13 +4,13 @@ from typing import Dict, List, Optional
 
 from blspy import G1Element
 
-from chia.consensus.block_record import BlockRecord
-from chia.consensus.blockchain_interface import BlockchainInterface
-from chia.types.blockchain_format.sized_bytes import bytes32
-from chia.types.blockchain_format.sub_epoch_summary import SubEpochSummary
-from chia.types.header_block import HeaderBlock
-from chia.types.weight_proof import SubEpochChallengeSegment, SubEpochSegments
-from chia.util.ints import uint32
+from coffee.consensus.block_record import BlockRecord
+from coffee.consensus.blockchain_interface import BlockchainInterface
+from coffee.types.blockchain_format.sized_bytes import bytes32
+from coffee.types.blockchain_format.sub_epoch_summary import SubEpochSummary
+from coffee.types.header_block import HeaderBlock
+from coffee.types.weight_proof import SubEpochChallengeSegment, SubEpochSegments
+from coffee.util.ints import uint32
 
 
 class BlockCache(BlockchainInterface):

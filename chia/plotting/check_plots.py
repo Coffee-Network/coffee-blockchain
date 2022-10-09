@@ -7,8 +7,8 @@ from typing import List
 from blspy import G1Element
 from chiapos import Verifier
 
-from chia.plotting.manager import PlotManager
-from chia.plotting.util import (
+from coffee.plotting.manager import PlotManager
+from coffee.plotting.util import (
     PlotRefreshResult,
     PlotsRefreshParameter,
     PlotRefreshEvents,
@@ -16,10 +16,10 @@ from chia.plotting.util import (
     find_duplicate_plot_IDs,
     parse_plot_info,
 )
-from chia.util.config import load_config
-from chia.util.hash import std_hash
-from chia.util.keychain import Keychain
-from chia.wallet.derive_keys import master_sk_to_farmer_sk, master_sk_to_local_sk
+from coffee.util.config import load_config
+from coffee.util.hash import std_hash
+from coffee.util.keychain import Keychain
+from coffee.wallet.derive_keys import master_sk_to_farmer_sk, master_sk_to_local_sk
 
 log = logging.getLogger(__name__)
 

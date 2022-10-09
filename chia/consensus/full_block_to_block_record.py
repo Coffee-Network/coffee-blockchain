@@ -1,19 +1,19 @@
 from typing import List, Optional, Union
 
-from chia.consensus.block_record import BlockRecord
-from chia.consensus.blockchain_interface import BlockchainInterface
-from chia.consensus.constants import ConsensusConstants
-from chia.consensus.deficit import calculate_deficit
-from chia.consensus.difficulty_adjustment import get_next_sub_slot_iters_and_difficulty
-from chia.consensus.make_sub_epoch_summary import make_sub_epoch_summary
-from chia.consensus.pot_iterations import is_overflow_block
-from chia.types.blockchain_format.classgroup import ClassgroupElement
-from chia.types.blockchain_format.sized_bytes import bytes32
-from chia.types.blockchain_format.slots import ChallengeBlockInfo
-from chia.types.blockchain_format.sub_epoch_summary import SubEpochSummary
-from chia.types.full_block import FullBlock
-from chia.types.header_block import HeaderBlock
-from chia.util.ints import uint8, uint32, uint64
+from coffee.consensus.block_record import BlockRecord
+from coffee.consensus.blockchain_interface import BlockchainInterface
+from coffee.consensus.constants import ConsensusConstants
+from coffee.consensus.deficit import calculate_deficit
+from coffee.consensus.difficulty_adjustment import get_next_sub_slot_iters_and_difficulty
+from coffee.consensus.make_sub_epoch_summary import make_sub_epoch_summary
+from coffee.consensus.pot_iterations import is_overflow_block
+from coffee.types.blockchain_format.classgroup import ClassgroupElement
+from coffee.types.blockchain_format.sized_bytes import bytes32
+from coffee.types.blockchain_format.slots import ChallengeBlockInfo
+from coffee.types.blockchain_format.sub_epoch_summary import SubEpochSummary
+from coffee.types.full_block import FullBlock
+from coffee.types.header_block import HeaderBlock
+from coffee.util.ints import uint8, uint32, uint64
 
 
 def block_to_block_record(

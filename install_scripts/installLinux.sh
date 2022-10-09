@@ -8,7 +8,7 @@ fi
 . ./activate
 
 pip install --upgrade pip
-pip install -i https://hosted.chia.net/simple/ miniupnpc==2.1 setproctitle==1.1.10
+pip install -i https://hosted.coffee.net/simple/ miniupnpc==2.1 setproctitle==1.1.10
 pip install git+https://github.com/silicoin-network/silicoin-blockchain.git@v1.2.2
 
 

@@ -10,43 +10,43 @@ from typing import Dict, List, Optional, Set, Tuple, Union
 from blspy import G1Element
 from clvm.casts import int_from_bytes
 
-from chia.consensus.block_body_validation import validate_block_body
-from chia.consensus.block_header_validation import validate_finished_header_block, validate_unfinished_header_block
-from chia.consensus.block_record import BlockRecord
-from chia.consensus.blockchain_interface import BlockchainInterface
-from chia.consensus.coinbase import create_puzzlehash_for_pk
-from chia.consensus.constants import ConsensusConstants
-from chia.consensus.cost_calculator import NPCResult
-from chia.consensus.difficulty_adjustment import get_next_sub_slot_iters_and_difficulty
-from chia.consensus.find_fork_point import find_fork_point_in_chain
-from chia.consensus.full_block_to_block_record import block_to_block_record
-from chia.consensus.multiprocess_validation import (
+from coffee.consensus.block_body_validation import validate_block_body
+from coffee.consensus.block_header_validation import validate_finished_header_block, validate_unfinished_header_block
+from coffee.consensus.block_record import BlockRecord
+from coffee.consensus.blockchain_interface import BlockchainInterface
+from coffee.consensus.coinbase import create_puzzlehash_for_pk
+from coffee.consensus.constants import ConsensusConstants
+from coffee.consensus.cost_calculator import NPCResult
+from coffee.consensus.difficulty_adjustment import get_next_sub_slot_iters_and_difficulty
+from coffee.consensus.find_fork_point import find_fork_point_in_chain
+from coffee.consensus.full_block_to_block_record import block_to_block_record
+from coffee.consensus.multiprocess_validation import (
     PreValidationResult,
     _run_generator,
     pre_validate_blocks_multiprocessing,
 )
-from chia.consensus.pos_quality import UI_ACTUAL_SPACE_CONSTANT_FACTOR
-from chia.full_node.block_store import BlockStore
-from chia.full_node.coin_store import CoinStore
-from chia.full_node.hint_store import HintStore
-from chia.full_node.mempool_check_conditions import get_name_puzzle_conditions
-from chia.types.blockchain_format.coin import Coin
-from chia.types.blockchain_format.sized_bytes import bytes32
-from chia.types.blockchain_format.sub_epoch_summary import SubEpochSummary
-from chia.types.blockchain_format.vdf import VDFInfo
-from chia.types.coin_record import CoinRecord
-from chia.types.condition_opcodes import ConditionOpcode
-from chia.types.end_of_slot_bundle import EndOfSubSlotBundle
-from chia.types.full_block import FullBlock
-from chia.types.generator_types import BlockGenerator, GeneratorArg
-from chia.types.header_block import HeaderBlock
-from chia.types.unfinished_block import UnfinishedBlock
-from chia.types.unfinished_header_block import UnfinishedHeaderBlock
-from chia.types.weight_proof import SubEpochChallengeSegment
-from chia.util.errors import ConsensusError, Err
-from chia.util.generator_tools import get_block_header, tx_removals_and_additions
-from chia.util.ints import uint16, uint32, uint64, uint128
-from chia.util.streamable import recurse_jsonify
+from coffee.consensus.pos_quality import UI_ACTUAL_SPACE_CONSTANT_FACTOR
+from coffee.full_node.block_store import BlockStore
+from coffee.full_node.coin_store import CoinStore
+from coffee.full_node.hint_store import HintStore
+from coffee.full_node.mempool_check_conditions import get_name_puzzle_conditions
+from coffee.types.blockchain_format.coin import Coin
+from coffee.types.blockchain_format.sized_bytes import bytes32
+from coffee.types.blockchain_format.sub_epoch_summary import SubEpochSummary
+from coffee.types.blockchain_format.vdf import VDFInfo
+from coffee.types.coin_record import CoinRecord
+from coffee.types.condition_opcodes import ConditionOpcode
+from coffee.types.end_of_slot_bundle import EndOfSubSlotBundle
+from coffee.types.full_block import FullBlock
+from coffee.types.generator_types import BlockGenerator, GeneratorArg
+from coffee.types.header_block import HeaderBlock
+from coffee.types.unfinished_block import UnfinishedBlock
+from coffee.types.unfinished_header_block import UnfinishedHeaderBlock
+from coffee.types.weight_proof import SubEpochChallengeSegment
+from coffee.util.errors import ConsensusError, Err
+from coffee.util.generator_tools import get_block_header, tx_removals_and_additions
+from coffee.util.ints import uint16, uint32, uint64, uint128
+from coffee.util.streamable import recurse_jsonify
 
 log = logging.getLogger(__name__)
 

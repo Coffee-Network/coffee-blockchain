@@ -1,4 +1,4 @@
-from chia.util.ints import uint64
+from coffee.util.ints import uint64
 
 from .constants import ConsensusConstants
 
@@ -29,7 +29,7 @@ testnet_kwargs = {
     # We override this value based on the chain being run (testnet0, testnet1, mainnet, etc)
     # Default used for tests is std_hash(b'')
     "GENESIS_CHALLENGE": bytes.fromhex("a863ac9871ebeaf1fdc7ed6acd3d5c8c39441d53187a936868c87e1e233a3819"),
-    # Forks of chia should change this value to provide replay attack protection. This is set to mainnet genesis chall
+    # Forks of coffee should change this value to provide replay attack protection. This is set to mainnet genesis chall
     "AGG_SIG_ME_ADDITIONAL_DATA": bytes.fromhex("ecbf4458b47e39c60afec66e245fccb042871417ffc5200cb0140346c2e044d0"),
     "GENESIS_PRE_FARM_POOL_PUZZLE_HASH": bytes.fromhex(
         "d819c28786af76b7977b1f941d8f48e0d74bd6b89ccc4d1471b6be8430186c3a"

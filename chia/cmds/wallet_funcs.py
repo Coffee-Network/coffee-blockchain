@@ -7,28 +7,28 @@ from typing import Callable, Dict, List, Optional, Tuple
 
 import aiohttp
 
-from chia.cmds.units import units
-from chia.rpc.full_node_rpc_client import FullNodeRpcClient
-from chia.rpc.wallet_rpc_client import WalletRpcClient
-from chia.server.start_wallet import SERVICE_NAME
-from chia.util.bech32m import decode_puzzle_hash, encode_puzzle_hash
-from chia.util.byte_types import hexstr_to_bytes
-from chia.util.config import load_config
-from chia.util.default_root import DEFAULT_ROOT_PATH
-from chia.util.ints import uint16, uint64
-from chia.wallet.transaction_record import TransactionRecord
-from chia.wallet.util.wallet_types import WalletType
+from coffee.cmds.units import units
+from coffee.rpc.full_node_rpc_client import FullNodeRpcClient
+from coffee.rpc.wallet_rpc_client import WalletRpcClient
+from coffee.server.start_wallet import SERVICE_NAME
+from coffee.util.bech32m import decode_puzzle_hash, encode_puzzle_hash
+from coffee.util.byte_types import hexstr_to_bytes
+from coffee.util.config import load_config
+from coffee.util.default_root import DEFAULT_ROOT_PATH
+from coffee.util.ints import uint16, uint64
+from coffee.wallet.transaction_record import TransactionRecord
+from coffee.wallet.util.wallet_types import WalletType
 
 
 def print_transaction(tx: TransactionRecord, verbose: bool, name) -> None:
     if verbose:
         print(tx)
     else:
-        chia_amount = Decimal(int(tx.amount)) / units["chia"]
+        coffee_amount = Decimal(int(tx.amount)) / units["coffee"]
         to_address = encode_puzzle_hash(tx.to_puzzle_hash, name)
         print(f"Transaction {tx.name}")
         print(f"Status: {'Confirmed' if tx.confirmed else ('In mempool' if tx.is_in_mempool() else 'Pending')}")
-        print(f"Amount {'sent' if tx.sent else 'received'}: {chia_amount} {name}")
+        print(f"Amount {'sent' if tx.sent else 'received'}: {coffee_amount} {name}")
         print(f"To address: {to_address}")
         print("Created at:", datetime.fromtimestamp(tx.created_at_time).strftime("%Y-%m-%d %H:%M:%S"))
         print("")
@@ -90,8 +90,8 @@ async def send(args: dict, wallet_client: WalletRpcClient, fingerprint: int) -> 
         )
         return
     print("Submitting transaction...")
-    final_amount = uint64(int(amount * units["chia"]))
-    final_fee = uint64(int(fee * units["chia"]))
+    final_amount = uint64(int(amount * units["coffee"]))
+    final_fee = uint64(int(fee * units["coffee"]))
     res = await wallet_client.send_transaction(wallet_id, final_amount, address, final_fee)
     tx_id = res.name
     start = time.time()
@@ -123,7 +123,7 @@ def wallet_coin_unit(typ: WalletType, address_prefix: str) -> Tuple[str, int]:
     if typ == WalletType.COLOURED_COIN:
         return "", units["colouredcoin"]
     if typ in [WalletType.STANDARD_WALLET, WalletType.POOLING_WALLET, WalletType.MULTI_SIG, WalletType.RATE_LIMITED]:
-        return address_prefix, units["chia"]
+        return address_prefix, units["coffee"]
     return "", units["mojo"]
 
 
@@ -166,7 +166,7 @@ async def send_from(args: dict, wallet_client: WalletRpcClient, fingerprint: int
         print(f"The withdraw amount should be larger than 0")
         return None
 
-    withdraw_amount = uint64(int(request_amount * units["chia"]))
+    withdraw_amount = uint64(int(request_amount * units["coffee"]))
     coin_records = None
 
     try:
@@ -277,7 +277,7 @@ async def get_wallet(wallet_client: WalletRpcClient, fingerprint: int = None) ->
             use_cloud = True
             if "backup_path" in log_in_response:
                 path = log_in_response["backup_path"]
-                print(f"Backup file from backup.chia.net downloaded and written to: {path}")
+                print(f"Backup file from backup.coffee.net downloaded and written to: {path}")
                 val = input("Do you want to use this file to restore from backup? (Y/N) ")
                 if val.lower() == "y":
                     log_in_response = await wallet_client.log_in_and_restore(fingerprint, path)
