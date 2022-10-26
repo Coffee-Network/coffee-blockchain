@@ -277,9 +277,9 @@ class FullNode:
             default_port = None
         if "dns_servers" in self.config:
             dns_servers = self.config["dns_servers"]
-        elif self.config["port"] == 8444:
+        elif self.config["port"] == 33844:
             # If `dns_servers` misses from the `config`, hardcode it if we're running mainnet.
-            # dns_servers.append("dns-introducer.coffee.net")
+            dns_servers.append("dns-introducer.farming.coffee")
             pass
         try:
             self.full_node_peers = FullNodePeers(

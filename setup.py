@@ -48,10 +48,10 @@ dev_dependencies = [
 
 kwargs = dict(
     name="coffee-blockchain",
-    author="Mariano Sorgente",
-    author_email="mariano@coffee.net",
+    author="Coffee Network",
+    author_email="staking@farming.coffee",
     description="Coffee blockchain full node, farmer, timelord, and wallet.",
-    url="https://coffee.net/",
+    url="https://farming.coffee/",
     license="Apache License",
     python_requires=">=3.7, <4",
     keywords="coffee blockchain node",
