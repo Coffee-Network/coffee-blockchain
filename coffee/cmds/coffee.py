@@ -22,7 +22,6 @@ from coffee.util.keychain import set_keys_root_path, supports_keyring_passphrase
 from coffee.util.ssl_check import check_ssl
 
 CONTEXT_SETTINGS = dict(help_option_names=["-h", "--help"])
-DIST_NAME = "Venus"
 
 
 def monkey_patch_click() -> None:
@@ -42,7 +41,7 @@ def monkey_patch_click() -> None:
 
 
 @click.group(
-    help=f"\n  Manage coffee blockchain infrastructure ({DIST_NAME} {__version__})\n",
+    help=f"\n  Manage coffee blockchain infrastructure ({__version__})\n",
     epilog="Try 'coffee start node', 'coffee netspace -d 192', or 'coffee show -s'",
     context_settings=CONTEXT_SETTINGS,
 )
@@ -88,7 +87,7 @@ if not supports_keyring_passphrase():
 
 @cli.command("version", short_help="Show coffee version")
 def version_cmd() -> None:
-    print(DIST_NAME, __version__)
+    print(__version__)
 
 
 @cli.command("run_daemon", short_help="Runs coffee daemon")
