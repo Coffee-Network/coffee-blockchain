@@ -32,10 +32,10 @@ testnet_kwargs = {
     # Forks of coffee should change this value to provide replay attack protection. This is set to mainnet genesis chall
     "AGG_SIG_ME_ADDITIONAL_DATA": bytes.fromhex("e91125c363572bbe07bd3876ce80501159e706edecb36b148e23d5e13b7917e6"),
     "GENESIS_PRE_FARM_POOL_PUZZLE_HASH": bytes.fromhex(
-        "d819c28786af76b7977b1f941d8f48e0d74bd6b89ccc4d1471b6be8430186c3a"
+        "dabdaee3a890867ade5f505ca51c0de341d213bd17846d403c72314726d291da"
     ),
     "GENESIS_PRE_FARM_FARMER_PUZZLE_HASH": bytes.fromhex(
-        "d819c28786af76b7977b1f941d8f48e0d74bd6b89ccc4d1471b6be8430186c3a"
+        "f112331cbda659174b5086e5ef3b2facea16884f53736d14fa42052b21a85206"
     ),
     "MAX_VDF_WITNESS_SIZE": 64,
     # Size of mempool = 50x the size of block # temporary change until #9125 gets in
