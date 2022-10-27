@@ -60,7 +60,7 @@ jobs:
     - name: Get pip cache dir
       id: pip-cache
       run: |
-        echo "::set-output name=dir::$(pip cache dir)"
+        echo "dir=$(pip cache dir)" >> $GITHUB_OUTPUT
 
     - name: Cache pip
       uses: actions/cache@v2.1.6
@@ -78,7 +78,7 @@ jobs:
         python3 -m venv ../venv
         . ../venv/bin/activate
         pip3 install setuptools_scm
-        echo "::set-output name=COFFEE_INSTALLER_VERSION::$(python3 ./build_scripts/installer-version.py)"
+        echo "COFFEE_INSTALLER_VERSION=$(python3 ./build_scripts/installer-version.py)" >> $GITHUB_OUTPUT
         deactivate
 
     - name: Test for secrets access
@@ -87,7 +87,7 @@ jobs:
       run: |
         unset HAS_SECRET
         if [ -n "$SECRET" ]; then HAS_SECRET='true' ; fi
-        echo ::set-output name=HAS_SECRET::${HAS_SECRET}
+        echo HAS_SECRET=${HAS_SECRET} >> $GITHUB_OUTPUT
       env:
         SECRET: "${{ secrets.INSTALLER_UPLOAD_SECRET }}"
 
@@ -222,8 +222,8 @@ jobs:
       if: startsWith(github.ref, 'refs/tags/')
       id: tag-name
       run: |
-        echo "::set-output name=TAG_NAME::$(echo ${{ github.ref }} | cut -d'/' -f 3)"
-        echo "::set-output name=REPO_NAME::$(echo ${{ github.repository }} | cut -d'/' -f 2)"
+        echo "TAG_NAME=$(echo ${{ github.ref }} | cut -d'/' -f 3)" >> $GITHUB_OUTPUT
+        echo "REPO_NAME=$(echo ${{ github.repository }} | cut -d'/' -f 2)" >> $GITHUB_OUTPUT
 
     - name: Mark installer complete
       if: startsWith(github.ref, 'refs/tags/')
