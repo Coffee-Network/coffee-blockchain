@@ -33,7 +33,7 @@ jobs:
     - name: Get npm cache directory
       id: npm-cache
       run: |
-        echo "dir=$(npm config get cache)" >> $GITHUB_OUTPUT
+        echo "dir=$(npm config get cache)" | Out-File -FilePath $Env:GITHUB_OUTPUT -Encoding utf8 -Append
 
     - name: Cache npm
       uses: actions/cache@v3
@@ -46,7 +46,7 @@ jobs:
     - name: Get pip cache dir
       id: pip-cache
       run: |
-        echo "dir=$(pip cache dir)" >> $GITHUB_OUTPUT
+        echo "dir=$(pip cache dir)" | Out-File -FilePath $Env:GITHUB_OUTPUT -Encoding utf8 -Append
 
     - name: Cache pip
       uses: actions/cache@v3
@@ -94,7 +94,7 @@ jobs:
         pip3 install setuptools_scm
         $env:COFFEE_INSTALLER_VERSION = python .\build_scripts\installer-version.py -win
         echo "$env:COFFEE_INSTALLER_VERSION"
-        echo "COFFEE_INSTALLER_VERSION=$env:COFFEE_INSTALLER_VERSION" >> $GITHUB_OUTPUT
+        echo "COFFEE_INSTALLER_VERSION=$env:COFFEE_INSTALLER_VERSION" | Out-File -FilePath $Env:GITHUB_OUTPUT -Encoding utf8 -Append
         deactivate
 
       # Get the most recent release from chia-plotter-madmax
@@ -219,8 +219,8 @@ jobs:
       if: startsWith(github.ref, 'refs/tags/')
       id: tag-name
       run: |
-        echo "TAG_NAME=$(echo ${{ github.ref }} | cut -d'/' -f 3)" >> $GITHUB_OUTPUT
-        echo "REPO_NAME=$(echo ${{ github.repository }} | cut -d'/' -f 2)" >> $GITHUB_OUTPUT
+        echo "TAG_NAME=$(echo ${{ github.ref }} | cut -d'/' -f 3)" | Out-File -FilePath $Env:GITHUB_OUTPUT -Encoding utf8 -Append
+        echo "REPO_NAME=$(echo ${{ github.repository }} | cut -d'/' -f 2)" | Out-File -FilePath $Env:GITHUB_OUTPUT -Encoding utf8 -Append
 
     - name: Mark installer complete
       if: startsWith(github.ref, 'refs/tags/')
