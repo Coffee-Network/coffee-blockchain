@@ -5,17 +5,7 @@ _mojo_per_coffee = 1000000000000
 _blocks_per_year = 1681920  # 32 * 6 * 24 * 365
 
 # preserve + testnet supply
-PREFARM = 1000000
-
-# TODO fork height to be decided
-# after reward hardfork activated, all the block rewards go to farmer,
-# because the pool contract singleton can't migrated to the forked chains,
-# so the pool protocol don't work in forked chains without re-plotting.
-REWARD_HARDFORK_HEIGHT = 2 ** 32 - 1
-
-
-def reward_hardfork_activated(height: uint32) -> bool:
-    return height >= REWARD_HARDFORK_HEIGHT
+PREFARM = 5000000
 
 
 def calculate_pool_reward(height: uint32) -> uint64:
@@ -26,9 +16,6 @@ def calculate_pool_reward(height: uint32) -> uint64:
     (3 years, etc), due to fluctuations in difficulty. They will likely come early, if the network space and VDF
     rates increase continuously.
     """
-    if reward_hardfork_activated(height):
-        return 0
-
     if height == 0:
         return uint64(int((7 / 8) * PREFARM * _mojo_per_coffee))
     elif height < 3 * _blocks_per_year:
@@ -50,18 +37,13 @@ def calculate_base_farmer_reward(height: uint32) -> uint64:
     (3 years, etc), due to fluctuations in difficulty. They will likely come early, if the network space and VDF
     rates increase continuously.
     """
-    if reward_hardfork_activated(height):
-        coefficient = 1.0
-    else:
-        coefficient = 1 / 8
-
     if height == 0:
-        return uint64(int(coefficient * PREFARM * _mojo_per_coffee))
+        return uint64(int((1 / 8) * PREFARM * _mojo_per_coffee))
     elif height < 3 * _blocks_per_year:
-        return uint64(int(coefficient * 1 * _mojo_per_coffee))
+        return uint64(int((1 / 8) * 1 * _mojo_per_coffee))
     elif height < 6 * _blocks_per_year:
-        return uint64(int(coefficient * 0.5 * _mojo_per_coffee))
+        return uint64(int((1 / 8) * 0.5 * _mojo_per_coffee))
     elif height < 9 * _blocks_per_year:
-        return uint64(int(coefficient * 0.25 * _mojo_per_coffee))
+        return uint64(int((1 / 8) * 0.25 * _mojo_per_coffee))
     else:
-        return uint64(int(coefficient * 0.125 * _mojo_per_coffee))
+        return uint64(int((1 / 8) * 0.125 * _mojo_per_coffee))
