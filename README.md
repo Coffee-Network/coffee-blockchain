@@ -20,13 +20,13 @@ Please visit our wiki for more information:
 
 ## Resource Links
 
-[CoffeeHub](https://www.coffee-hub.com/)
+Silicoin fork with staking. You need 1 coin for your 1TB of farming netspace.
 
-[Coffee Forks Calculator](https://coffeeforkscalculator.com/)
-
-[Coffeeforks Blockchain](https://coffeeforksblockchain.com/)
-
-[TokenDock](https://tokendock.io/)
+Blockchain Explorer: https://alltheblocks.net/coffee
+Coffee Website: https://farming.coffee
+Get Coffee Coins: https://swap.menu
+Calculator:https://chiaforkscalculator.com/coffee
+https://chiafork.space/fork/Coffee/
 
 ## How to staking
 
