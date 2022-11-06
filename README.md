@@ -24,7 +24,7 @@ Silicoin fork with staking. You need 1 coin for your 1TB of farming netspace.
 
 Blockchain Explorer: https://alltheblocks.net/coffee
 Coffee Website: https://farming.coffee
-Get Coffee Coins: https://swap.menu
+Get Coffee Coins: https://swap.menu/rates
 Calculator:https://chiaforkscalculator.com/coffee
 https://chiafork.space/fork/Coffee/
 
